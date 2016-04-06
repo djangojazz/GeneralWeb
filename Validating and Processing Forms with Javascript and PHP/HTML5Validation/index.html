@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Form Validation &amp Processing</title>
+	<link rel="stylesheet" href="normalize.css" />
+	<link rel="stylesheet" href="mystyle.css" />	
+</head>
+<body>
+<form class="group" action="#">
+	<ol>
+		<li class="group">
+			<label for="countyfield">County</label>
+			<input name="county" id="countyfield" list="counties" />
+
+			<datalist id="counties">
+				<option value="Orange">
+				<option value="Seminole">
+				<option value="Volusia">
+				<option value="Brevard">
+			</datalist>
+		</li>
+		<li class="group">
+			<label for="patternfield">Pattern Matching</label>
+			<input name="pattern" pattern="Texas" id="patternfield" />
+		</li>
+		<li class="group">
+			<label for="namefield">Name</label>
+			<input type="text" maxlength="10" name="name" id="namefield" />
+		</li>
+		<li class="group">
+			<label for="emailfield">Email</label>
+			<input type="email" name="email" id="emailfield" />
+		</li>
+		<li class="group">
+			<label for="filefield">Upload a File</label>
+			<input type="file" name="uploads" accept="image/*" id="filefield" />
+		</li>
+		<li class="group">
+			<label for="agefield">Age</label>
+			<input type="number" min="13" max="99" name="age" id="agefield" />
+		</li>
+		<li class="group">
+			<label for="datetimefield">Reservation Date</label>
+			<input type="date" min="2016-04-01" max="2016-04-08" name="date" id="datetimefield" />
+		</li>
+	</ol>
+<button type="submit">send</button>
+</form>
+</body>
+</html>
