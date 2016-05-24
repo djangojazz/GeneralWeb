@@ -1,27 +1,48 @@
-var talk = function(saywhat) {
-    console.log(saywhat);
-}
+//// Part 2.5 Chaining arguments in a function
+//var plus = function() {
+//    var sum = 0;
+//    for (var i = arguments.length - 1; i >= 0; i--) {
+//        sum += arguments[i];
+//    }
+//    return sum;
+//}
+//
+//console.log(plus(2,2,4))
 
-var Dog = function() {
-    var name, breed;
-}
+//// part 2.4 Call and Apply
+//var speak = function(what) {
+//    console.log(what);
+//}
+//
+//var saysomething = {normal: "meow", love: "purr"}
+//speak.call(saysomething, saysomething.normal);
+//speak.apply(saysomething, ['meoff']);
 
-var Cat = function() {
-    var name, breed;
-}
-
-Dog.prototype.speak = talk;
-Cat.prototype.speak = talk;
-
-firstDog = new Dog();
-firstDog.name = "Rover";
-firstDog.breed = "Doberman";
-firstDog.speak("Woof")
-
-firstCat = new Cat();
-firstCat.name = "Sniggles";
-firstCat.breed = "Manx";
-firstCat.speak("meowCat")
+////part 2. 3 prototyping
+//var talk = function(saywhat) {
+//    console.log(saywhat);
+//}
+//
+//var Dog = function() {
+//    var name, breed;
+//}
+//
+//var Cat = function() {
+//    var name, breed;
+//}
+//
+//Dog.prototype.speak = talk;
+//Cat.prototype.speak = talk;
+//
+//firstDog = new Dog();
+//firstDog.name = "Rover";
+//firstDog.breed = "Doberman";
+//firstDog.speak("Woof")
+//
+//firstCat = new Cat();
+//firstCat.name = "Sniggles";
+//firstCat.breed = "Manx";
+//firstCat.speak("meowCat")
 
 //// Part 2.2
 //var Dog = function() {
