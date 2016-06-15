@@ -1,15 +1,32 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     uglify = require('gulp-uglify'),
+    sass = require('gulp-ruby-sass'),
+    coffee = require('gulp-coffee'),
     concat = require('gulp-concat'),
     livereload = require('gulp-livereload'),
     lr = require('tiny-lr'),
     server = lr();
 
-var jsSources = [
-  'components/scripts/scriptOne.js',
-  'components/scripts/scriptTwo.js'
+var coffeeSources = [
+  'components/coffee/*.coffee'
 ];
+
+var jsSources = [
+  'components/lib/jquery/jquery.js',
+  'components/scripts/*.js'
+];
+
+var sassSources = [
+  'components/sass/*.scss'
+];
+
+gulp.task('coffee', function() {
+  gulp.src(coffeeSources)
+      .pipe(coffee({ bare: true})
+          .on('error', gutil.log))
+      .pipe(gulp.dest('components/scripts'))
+});
 
 gulp.task('js', function() {
   gulp.src(jsSources)
@@ -18,13 +35,23 @@ gulp.task('js', function() {
           .pipe(gulp.dest('js'));
 });
 
+gulp.task('sass', function() {
+  gulp.src(sassSources)
+      .pipe(sass({style: 'expanded', lineNumbers: true}))
+      .pipe(concat('style.css'))
+      .pipe(gulp.dest('css'))
+      .pipe(livereload())
+});
+
 gulp.task('watch', function() {
   var server = livereload();
   gulp.watch(jsSources, ['js']);
+  gulp.watch(coffeeSources, ['coffee']);
+  gulp.watch(sassSources, ['sass']);
   gulp.watch(['js/script.js', '*.html'], function(e) {
     server.changed(e.path);
   });
 });
 
-gulp.task('default', ['js', 'watch']);
+gulp.task('default', ['coffee', 'sass', 'js', 'watch']);
 
