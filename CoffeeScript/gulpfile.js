@@ -38,6 +38,7 @@ gulp.task('js', function() {
 gulp.task('sass', function() {
   gulp.src(sassSources)
       .pipe(sass({style: 'expanded', lineNumbers: true}))
+        .on('error', gutil.log)
       .pipe(concat('style.css'))
       .pipe(gulp.dest('css'))
       .pipe(livereload())

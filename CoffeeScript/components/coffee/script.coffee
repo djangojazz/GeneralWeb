@@ -1,2 +1,3 @@
-$ ->
-  $('h1').append('Hello there')
+name = 'Brett'
+
+$('#content').append "<em>#{name}</em>"
