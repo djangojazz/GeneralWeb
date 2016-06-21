@@ -1,0 +1,11 @@
+{
+  "name": "buildingawebsite",
+  "version": "1.0.0",
+  "description": "Building a Website With Node and Express",
+  "main": "nodeexample.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brett Morin",
+  "license": "ISC"
+}
