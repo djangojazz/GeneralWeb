@@ -8,6 +8,7 @@
   },
   "author": "Brett Morin",
   "dependencies": {
+    "express": "^4.14.0",
     "gulp": "^3.9.1"
   }
 }
