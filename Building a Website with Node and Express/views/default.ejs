@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><% include partials/page/head.ejs %></head>
+<body class="<%= classname%>">
+<% include partials/page/header.ejs %>
+
+<div class="container">
+    <h1><%= pagetitle %>--<%= title %></h1>
+    <p>
+        Cred gluten-free disrupt, synth microdosing hashtag shoreditch. Man braid tacos next level umami godard, mlkshk kitsch sustainable. Try-hard four loko narwhal tousled humblebrag, tumblr cliche flannel keytar raw denim man braid put a bird on it chillwave wayfarers fixie. Flannel butcher hammock artisan everyday carry. Ugh cred tousled, VHS heirloom retro roof party meggings kitsch mustache four dollar toast narwhal portland keffiyeh. Artisan kombucha yuccie whatever. Everyday carry meggings aesthetic lo-fi, before they sold out hammock polaroid flexitarian gastropub raw denim health goth.
+    </p>
+
+    <% if (typeof(users) !== 'undefined') {%>
+    <ul>
+        <% for(var i = 0; i < users.length; i++) {%>
+        <li><%= users[i] %></li>
+        <% } %>
+    </ul>
+    <% }%>
+</div><!-- container -->
+
+<% include partials/page/footer.ejs %>
+<% include partials/page/jsdefaults.ejs %>
+
+</body>
+</html>
