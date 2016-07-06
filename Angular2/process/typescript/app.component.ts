@@ -5,6 +5,15 @@ import {Component} from 'angular2/core';
     templateUrl: 'partials/app.html'
 })
 
-export class AppComponent {
+export class AppComponent{
+    name = 'Brett';
+    artists = ['Barot Bellingham', 'Jonathan Ferrar', 'Hillary Post' ];
 
+    onClick(myName) {
+        this.name = myName;
+    }
+
+    addArtist(myArtist) {
+        this.artists.push(myArtist);
+    }
 }
