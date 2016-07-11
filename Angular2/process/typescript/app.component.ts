@@ -1,4 +1,6 @@
 import {Component} from 'angular2/core';
+import {Component} from './artist-item.component';
+import {ArtistItemComponent} from "./artist-item.component";
 
 interface Artist {
     name: string;
@@ -10,6 +12,7 @@ interface Artist {
 @Component({
     selector: 'my-app',
     templateUrl: 'partials/app.html',
+    directives: [ArtistItemComponent],
     styleUrls: ['css/app.css']
 })
 
