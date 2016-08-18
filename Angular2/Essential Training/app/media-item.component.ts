@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
-import {FavoriteDirective} from './favorite.directive' 
+import {FavoriteDirective} from './favorite.directive';
 
 @Component({
     selector: 'media-item',
@@ -10,8 +10,8 @@ import {FavoriteDirective} from './favorite.directive'
 export class MediaItemComponent {
     @Input('mediaItemToWatch') mediaItem;
     @Output('deleted') delete = new EventEmitter();
-
+    
     onDelete() {
-        this.delete.emit(this.Item);
+        this.delete.emit(this.mediaItem);
     }
 }

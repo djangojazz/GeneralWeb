@@ -1,9 +1,8 @@
 import {Pipe} from 'angular2/core';
 
-@Pipe ({
+@Pipe({
     name: 'categoryList'
 })
-
 export class CategoryListPipe {
     transform(mediaItems) {
         var categories = [];
