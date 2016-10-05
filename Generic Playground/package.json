@@ -1,0 +1,15 @@
+{
+  "name": "genericplayground",
+  "description": "testing",
+  "repository": {},
+  "version": "1.0.0",
+  "main": "MyJavascript.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "author": "Brett Morin",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.2.2"
+  }
+}
