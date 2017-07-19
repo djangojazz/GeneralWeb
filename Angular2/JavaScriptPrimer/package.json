@@ -5,12 +5,14 @@
     "systemjs": "0.19.40",
     "bootstrap": "4.0.0-alpha.4"
   },
+
   "devDependencies": {
     "lite-server": "2.2.2",
     "typescript": "2.0.3",
     "typings": "1.4.0",
     "concurrently": "3.1.0"
   },
+
   "scripts": {
     "start": "concurrently \"npm run tscwatch\" \"npm run lite\" ",
     "tsc": "tsc",

@@ -1,2 +1,11 @@
-console.log("Hello");
-console.log("Apples");
+"use strict";
+var NameAndWeather_1 = require("./modules/NameAndWeather");
+var DuplicateName_1 = require("./modules/DuplicateName");
+var tempConverter_1 = require("./tempConverter");
+var name = new NameAndWeather_1.Name("Brett", "Morin");
+var loc = new NameAndWeather_1.WeatherLocation("raining", "Portland");
+var other = new DuplicateName_1.Name();
+var cTemp = tempConverter_1.TempConverter.convertFtoC(38);
+var tuple;
+tuple = ["Portland", "raining", tempConverter_1.TempConverter.convertFtoC("68")];
+console.log("It is " + tuple[2] + " degrees C and " + tuple[1] + " in " + tuple[0]);
