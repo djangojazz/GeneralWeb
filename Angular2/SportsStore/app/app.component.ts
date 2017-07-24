@@ -2,8 +2,6 @@
 
 @Component({
     selector: "app",
-    template: `<div class="bg-success p-a-1 text-xs-center">
-                        This is Brett's SportsStore
-                </div>`
+    template: "<store></store>"
 })
 export class AppComponent { }
