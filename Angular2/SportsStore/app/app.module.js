@@ -17,17 +17,58 @@ var checkout_component_1 = require("./store/checkout.component");
 var cartDetail_component_1 = require("./store/cartDetail.component");
 var router_1 = require("@angular/router");
 var storeFirst_guard_1 = require("./storeFirst.guard");
+var admin_module_1 = require("./admin/admin.module");
+var auth_component_1 = require("./admin/auth.component");
+var admin_component_1 = require("./admin/admin.component");
+var auth_guard_1 = require("./admin/auth.guard");
+var productTable_component_1 = require("./admin/productTable.component");
+var productEditor_component_1 = require("./admin/productEditor.component");
+var orderTable_component_1 = require("./admin/orderTable.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, store_module_1.StoreModule,
+            imports: [platform_browser_1.BrowserModule, store_module_1.StoreModule, admin_module_1.AdminModule,
                 router_1.RouterModule.forRoot([
-                    { path: "store", component: store_component_1.StoreComponent, canActivate: [storeFirst_guard_1.StoreFirstGuard] },
-                    { path: "cart", component: cartDetail_component_1.CartDetailComponent, canActivate: [storeFirst_guard_1.StoreFirstGuard] },
-                    { path: "checkout", component: checkout_component_1.CheckoutComponent, canActivate: [storeFirst_guard_1.StoreFirstGuard] },
-                    { path: "admin", loadChildren: "app/admin/admin.module#AdminModule", canActivate: [storeFirst_guard_1.StoreFirstGuard] },
+                    {
+                        path: "store", component: store_component_1.StoreComponent,
+                        canActivate: [storeFirst_guard_1.StoreFirstGuard]
+                    },
+                    {
+                        path: "cart", component: cartDetail_component_1.CartDetailComponent,
+                        canActivate: [storeFirst_guard_1.StoreFirstGuard]
+                    },
+                    {
+                        path: "checkout", component: checkout_component_1.CheckoutComponent,
+                        canActivate: [storeFirst_guard_1.StoreFirstGuard]
+                    },
+                    {
+                        path: "admin",
+                        children: [
+                            { path: "auth", component: auth_component_1.AuthComponent },
+                            {
+                                path: "main", component: admin_component_1.AdminComponent,
+                                canActivate: [auth_guard_1.AuthGuard],
+                                children: [
+                                    {
+                                        path: "products/:mode/:id",
+                                        component: productEditor_component_1.ProductEditorComponent
+                                    },
+                                    {
+                                        path: "products/:mode",
+                                        component: productEditor_component_1.ProductEditorComponent
+                                    },
+                                    { path: "products", component: productTable_component_1.ProductTableComponent },
+                                    { path: "orders", component: orderTable_component_1.OrderTableComponent },
+                                    { path: "**", redirectTo: "products" }
+                                ]
+                            },
+                            { path: "**", redirectTo: "auth" }
+                        ],
+                        //loadChildren: "app/admin/admin.module#AdminModule",
+                        canActivate: [storeFirst_guard_1.StoreFirstGuard]
+                    },
                     { path: "**", redirectTo: "/store" }
                 ])],
             providers: [storeFirst_guard_1.StoreFirstGuard],
