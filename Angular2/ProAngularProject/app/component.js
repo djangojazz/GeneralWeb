@@ -14,6 +14,7 @@ var ProductComponent = (function () {
     function ProductComponent(ref) {
         this.model = new repository_model_1.Model();
         this.targetName = "Kayak";
+        this.counter = 1;
         window.appRef = ref;
         window.model = this.model;
     }
@@ -27,7 +28,21 @@ var ProductComponent = (function () {
         return this.model.getProducts();
     };
     ProductComponent.prototype.getProductCount = function () {
+        console.log("getProductCount invoked");
         return this.getProducts().length;
+    };
+    ProductComponent.prototype.getKey = function (index, product) {
+        return product.id;
+    };
+    Object.defineProperty(ProductComponent.prototype, "nextproduct", {
+        get: function () {
+            return this.model.getProducts().shift();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ProductComponent.prototype.getProductPrice = function (index) {
+        return Math.floor(this.getProduct(index).price);
     };
     ProductComponent = __decorate([
         core_1.Component({

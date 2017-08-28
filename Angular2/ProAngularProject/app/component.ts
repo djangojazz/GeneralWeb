@@ -27,8 +27,23 @@ export class ProductComponent {
     }
 
     getProductCount(): number {
+        console.log("getProductCount invoked")
         return this.getProducts().length;
     }
 
+    getKey(index: number, product: Product) {
+        return product.id;
+    }
+
     targetName: string = "Kayak";
+
+    counter: number = 1;
+
+    get nextproduct(): Product {
+        return this.model.getProducts().shift();
+    }
+
+    getProductPrice(index: number): number {
+        return Math.floor(this.getProduct(index).price);
+    }
 }
