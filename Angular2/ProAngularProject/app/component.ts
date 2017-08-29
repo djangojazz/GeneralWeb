@@ -9,15 +9,6 @@ import { Product } from "./product.model";
 export class ProductComponent {
     model: Model = new Model();
 
-    constructor(ref: ApplicationRef) {
-        (<any>window).appRef = ref;
-        (<any>window).model = this.model;
-    }
-
-    getProductByPosition(position: number): Product{
-        return this.model.getProducts()[position];
-    }
-
     getProduct(key: number): Product {
         return this.model.getProduct(key);
     }
@@ -26,24 +17,9 @@ export class ProductComponent {
         return this.model.getProducts();
     }
 
-    getProductCount(): number {
-        console.log("getProductCount invoked")
-        return this.getProducts().length;
-    }
+    selectedProduct: string = "Kayak";
 
-    getKey(index: number, product: Product) {
-        return product.id;
-    }
-
-    targetName: string = "Kayak";
-
-    counter: number = 1;
-
-    get nextproduct(): Product {
-        return this.model.getProducts().shift();
-    }
-
-    getProductPrice(index: number): number {
-        return Math.floor(this.getProduct(index).price);
+    getSelected(product: Product): boolean {
+        return product.name == this.selectedProduct;
     }
 }
