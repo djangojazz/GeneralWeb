@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var repository_model_1 = require("./repository.model");
 var product_model_1 = require("./product.model");
+var form_model_1 = require("./form.model");
 var ProductComponent = (function () {
     function ProductComponent() {
         this.model = new repository_model_1.Model();
+        this.form = new form_model_1.ProductFormGroup();
         this.newProduct = new product_model_1.Product();
-        this.selectedProduct = "Kayak";
+        this.formSubmitted = false;
     }
     ProductComponent.prototype.getProduct = function (key) {
         return this.model.getProduct(key);
@@ -33,8 +35,14 @@ var ProductComponent = (function () {
     ProductComponent.prototype.addProduct = function (p) {
         console.log("New Product: " + this.jsonProduct);
     };
-    ProductComponent.prototype.getSelected = function (product) {
-        return product.name == this.selectedProduct;
+    ProductComponent.prototype.submitForm = function (form) {
+        this.formSubmitted = true;
+        if (form.valid) {
+            this.addProduct(this.newProduct);
+            this.newProduct = new product_model_1.Product();
+            form.reset();
+            this.formSubmitted = false;
+        }
     };
     ProductComponent = __decorate([
         core_1.Component({
