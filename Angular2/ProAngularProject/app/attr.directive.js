@@ -20,7 +20,7 @@ var PaAttrDirective = (function () {
         core_1.Directive({
             selector: "[pa-attr]",
         }),
-        __param(1, core_1.Attribute("pa-attr-class")), 
+        __param(1, core_1.Attribute("pa-attr")), 
         __metadata('design:paramtypes', [core_1.ElementRef, String])
     ], PaAttrDirective);
     return PaAttrDirective;
