@@ -17,7 +17,7 @@ var PaIteratorDirective = (function () {
     PaIteratorDirective.prototype.ngOnInit = function () {
         this.container.clear();
         for (var i = 0; i < this.dataSource.length; i++) {
-            this.container.createEmbeddedView(this.template, new PaIteratorContext(this.dataSource[i]));
+            this.container.createEmbeddedView(this.template, new PaIteratorContext(this.dataSource[i], i, this.dataSource.length));
         }
     };
     __decorate([
@@ -34,8 +34,13 @@ var PaIteratorDirective = (function () {
 }());
 exports.PaIteratorDirective = PaIteratorDirective;
 var PaIteratorContext = (function () {
-    function PaIteratorContext($implicit) {
+    function PaIteratorContext($implicit, index, total) {
         this.$implicit = $implicit;
+        this.index = index;
+        this.odd = index % 2 == 1;
+        this.even = !this.odd;
+        this.first = index == 0;
+        this.last = index == total - 1;
     }
     return PaIteratorContext;
 }());
