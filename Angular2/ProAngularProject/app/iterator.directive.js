@@ -15,6 +15,13 @@ var PaIteratorDirective = (function () {
         this.template = template;
     }
     PaIteratorDirective.prototype.ngOnInit = function () {
+        this.updateContent();
+    };
+    PaIteratorDirective.prototype.ngDoCheck = function () {
+        console.log("ngDoCheck Called");
+        this.updateContent();
+    };
+    PaIteratorDirective.prototype.updateContent = function () {
         this.container.clear();
         for (var i = 0; i < this.dataSource.length; i++) {
             this.container.createEmbeddedView(this.template, new PaIteratorContext(this.dataSource[i], i, this.dataSource.length));
@@ -41,6 +48,10 @@ var PaIteratorContext = (function () {
         this.even = !this.odd;
         this.first = index == 0;
         this.last = index == total - 1;
+        // setInterval(() => {
+        //     this.odd = !this.odd; this.even = !this.even;
+        //     this.$implicit
+        // }, 2000);
     }
     return PaIteratorContext;
 }());
