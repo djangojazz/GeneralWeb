@@ -28,6 +28,9 @@ var ProductComponent = (function () {
     ProductComponent.prototype.addProduct = function (p) {
         this.model.saveProduct(p);
     };
+    ProductComponent.prototype.deleteProduct = function (key) {
+        this.model.deleteProduct(key);
+    };
     ProductComponent.prototype.submitForm = function (form) {
         this.formSubmitted = true;
         if (form.valid) {
