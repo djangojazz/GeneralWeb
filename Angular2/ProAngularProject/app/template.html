@@ -34,7 +34,15 @@
         </label>
     </div>
 
-    <table *paIf="showTable" class="table table-sm table-bordered table-striped">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" [(ngModel)]="darkColor" />
+            Dark Cell Color
+        </label>
+    </div>
+
+    <table *paIf="showTable" [paCellDarkColor]="darkColor"
+         class="table table-sm table-bordered table-striped">
         <tr><th></th><th>Name</th><th>Category</th><th>Price</th><th></th></tr>
             <tr *paFor="let item of getProducts(); let i=index; let odd=odd;
             let even=even" [class.bg-info]="odd" [class.bg-warning]="even">
