@@ -14,8 +14,13 @@ var PaCellColorSwitcher = (function () {
     function PaCellColorSwitcher() {
     }
     PaCellColorSwitcher.prototype.ngOnChanges = function (changes) {
-        if (this.contentChild != null) {
-            this.contentChild.setColor(changes["modelProperty"].currentValue);
+        this.updateContentChildren(changes["modelProperty"].currentValue);
+    };
+    PaCellColorSwitcher.prototype.updateContentChildren = function (dark) {
+        if (this.contentChildren != null && dark != undefined) {
+            this.contentChildren.forEach(function (child, index) {
+                child.setColor(index % 2 ? dark : !dark);
+            });
         }
     };
     __decorate([
@@ -23,9 +28,9 @@ var PaCellColorSwitcher = (function () {
         __metadata('design:type', Boolean)
     ], PaCellColorSwitcher.prototype, "modelProperty", void 0);
     __decorate([
-        core_1.ContentChild(cellColor_directive_1.PaCellColor), 
-        __metadata('design:type', cellColor_directive_1.PaCellColor)
-    ], PaCellColorSwitcher.prototype, "contentChild", void 0);
+        core_1.ContentChildren(cellColor_directive_1.PaCellColor), 
+        __metadata('design:type', core_1.QueryList)
+    ], PaCellColorSwitcher.prototype, "contentChildren", void 0);
     PaCellColorSwitcher = __decorate([
         core_1.Directive({
             selector: "table"
