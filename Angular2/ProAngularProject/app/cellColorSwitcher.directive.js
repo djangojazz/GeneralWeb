@@ -16,6 +16,12 @@ var PaCellColorSwitcher = (function () {
     PaCellColorSwitcher.prototype.ngOnChanges = function (changes) {
         this.updateContentChildren(changes["modelProperty"].currentValue);
     };
+    PaCellColorSwitcher.prototype.ngAfterContentInit = function () {
+        var _this = this;
+        this.contentChildren.changes.subscribe(function () {
+            setTimeout(function () { return _this.updateContentChildren(_this.modelProperty); }, 0);
+        });
+    };
     PaCellColorSwitcher.prototype.updateContentChildren = function (dark) {
         if (this.contentChildren != null && dark != undefined) {
             this.contentChildren.forEach(function (child, index) {
