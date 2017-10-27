@@ -18,6 +18,8 @@ var paif_directive_1 = require("./paif.directive");
 var iterator_directive_1 = require("./iterator.directive");
 var cellColor_directive_1 = require("./cellColor.directive");
 var cellColorSwitcher_directive_1 = require("./cellColorSwitcher.directive");
+var productTable_component_1 = require("./productTable.component");
+var productForm_component_1 = require("./productForm.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,7 +28,7 @@ var AppModule = (function () {
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule],
             declarations: [component_1.ProductComponent, attr_directive_1.PaAttrDirective, twoway_directive_1.PaModel,
                 paif_directive_1.PaStructureDirective, iterator_directive_1.PaIteratorDirective,
-                cellColor_directive_1.PaCellColor, cellColorSwitcher_directive_1.PaCellColorSwitcher],
+                cellColor_directive_1.PaCellColor, cellColorSwitcher_directive_1.PaCellColorSwitcher, productTable_component_1.ProductTableComponent, productForm_component_1.ProductFormComponent],
             bootstrap: [component_1.ProductComponent]
         }), 
         __metadata('design:paramtypes', [])
