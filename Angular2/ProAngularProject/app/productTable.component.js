@@ -15,7 +15,7 @@ var ProductTableComponent = (function () {
     ProductTableComponent = __decorate([
         core_1.Component({
             selector: "paProductTable",
-            template: "<div>This is the table component</div>"
+            templateUrl: "app/productTable.component.html"
         }), 
         __metadata('design:paramtypes', [])
     ], ProductTableComponent);
