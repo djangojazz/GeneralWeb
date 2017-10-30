@@ -9,9 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var repository_model_1 = require("./repository.model");
 var ProductTableComponent = (function () {
     function ProductTableComponent() {
+        this.showTable = true;
     }
+    ProductTableComponent.prototype.getProduct = function (key) {
+        return this.dataModel.getProduct(key);
+    };
+    ProductTableComponent.prototype.getProducts = function () {
+        return this.dataModel.getProducts();
+    };
+    ProductTableComponent.prototype.deleteProduct = function (key) {
+        this.dataModel.deleteProduct(key);
+    };
+    __decorate([
+        core_1.Input("model"), 
+        __metadata('design:type', repository_model_1.Model)
+    ], ProductTableComponent.prototype, "dataModel", void 0);
     ProductTableComponent = __decorate([
         core_1.Component({
             selector: "paProductTable",
