@@ -1,5 +1,5 @@
 ﻿<div class="col-xs-4 p-a-1 bg-success">
-    <paProductForm></paProductForm>
+    <paProductForm (paNewProduct)="addProduct($event)"></paProductForm>
 </div>
 <div class="col-xs-8 p-a-1 bg-primary">
     <paProductTable [model]="model"></paProductTable>
