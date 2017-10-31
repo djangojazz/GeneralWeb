@@ -34,7 +34,8 @@ var ProductFormComponent = (function () {
     ProductFormComponent = __decorate([
         core_1.Component({
             selector: "paProductForm",
-            templateUrl: "app/productForm.component.html"
+            templateUrl: "app/productForm.component.html",
+            styles: ["div { background-color: lightgreen} "]
         }), 
         __metadata('design:paramtypes', [])
     ], ProductFormComponent);

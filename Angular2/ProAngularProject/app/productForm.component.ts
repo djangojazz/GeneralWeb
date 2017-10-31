@@ -4,7 +4,8 @@ import { ProductFormGroup } from "./form.model";
 
 @Component({
     selector: "paProductForm",
-    templateUrl: "app/productForm.component.html"
+    templateUrl: "app/productForm.component.html",
+    styles: ["div { background-color: lightgreen} "]
 })
 export class ProductFormComponent {
     form: ProductFormGroup = new ProductFormGroup();
