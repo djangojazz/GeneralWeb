@@ -35,7 +35,8 @@ var ProductFormComponent = (function () {
         core_1.Component({
             selector: "paProductForm",
             templateUrl: "app/productForm.component.html",
-            styles: ["div { background-color: lightgreen} "]
+            styleUrls: ["app/productForm.component.css"],
+            encapsulation: core_1.ViewEncapsulation.Emulated
         }), 
         __metadata('design:paramtypes', [])
     ], ProductFormComponent);

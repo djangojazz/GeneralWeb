@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var repository_model_1 = require("./repository.model");
+var cellColor_directive_1 = require("./cellColor.directive");
 var ProductTableComponent = (function () {
     function ProductTableComponent() {
         this.showTable = true;
@@ -23,10 +24,29 @@ var ProductTableComponent = (function () {
     ProductTableComponent.prototype.deleteProduct = function (key) {
         this.dataModel.deleteProduct(key);
     };
+    ProductTableComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.viewChildren.changes.subscribe(function () {
+            _this.updateViewChildren();
+        });
+        this.updateViewChildren();
+    };
+    ProductTableComponent.prototype.updateViewChildren = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.viewChildren.forEach(function (child, index) {
+                child.setColor(index % 2 ? true : false);
+            });
+        }, 0);
+    };
     __decorate([
         core_1.Input("model"), 
         __metadata('design:type', repository_model_1.Model)
     ], ProductTableComponent.prototype, "dataModel", void 0);
+    __decorate([
+        core_1.ViewChildren(cellColor_directive_1.PaCellColor), 
+        __metadata('design:type', core_1.QueryList)
+    ], ProductTableComponent.prototype, "viewChildren", void 0);
     ProductTableComponent = __decorate([
         core_1.Component({
             selector: "paProductTable",

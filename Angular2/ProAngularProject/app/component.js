@@ -20,7 +20,8 @@ var ProductComponent = (function () {
     ProductComponent = __decorate([
         core_1.Component({
             selector: "app",
-            templateUrl: "app/template.html"
+            templateUrl: "app/template.html",
+            styles: ["/deep/ div { border: 2px black solid; font-style:italic }"]
         }), 
         __metadata('design:paramtypes', [])
     ], ProductComponent);
