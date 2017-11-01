@@ -22,7 +22,7 @@ var PaCellColor = (function () {
     ], PaCellColor.prototype, "bgClass", void 0);
     PaCellColor = __decorate([
         core_1.Directive({
-            selector: "td"
+            selector: "td[paApplyColor]"
         }), 
         __metadata('design:paramtypes', [])
     ], PaCellColor);
