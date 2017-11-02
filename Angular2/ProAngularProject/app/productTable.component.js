@@ -12,6 +12,9 @@ var core_1 = require("@angular/core");
 var repository_model_1 = require("./repository.model");
 var ProductTableComponent = (function () {
     function ProductTableComponent() {
+        this.dateObject = new Date(2020, 1, 20);
+        this.dateString = "2020-02-20T00:00:00.000Z";
+        this.dateNumber = 1582156800000;
     }
     ProductTableComponent.prototype.getProduct = function (key) {
         return this.dataModel.getProduct(key);
