@@ -8,6 +8,5 @@ import { DiscountService } from "./discount.service";
             </div>`
 })
 export class PaDiscountDisplayComponent {
-    @Input("discounter")
-    discounter: DiscountService;
+    constructor(private discounter: DiscountService) {}
 }

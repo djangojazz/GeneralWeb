@@ -11,18 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var discount_service_1 = require("./discount.service");
 var PaDiscountDisplayComponent = (function () {
-    function PaDiscountDisplayComponent() {
+    function PaDiscountDisplayComponent(discounter) {
+        this.discounter = discounter;
     }
-    __decorate([
-        core_1.Input("discounter"), 
-        __metadata('design:type', discount_service_1.DiscountService)
-    ], PaDiscountDisplayComponent.prototype, "discounter", void 0);
     PaDiscountDisplayComponent = __decorate([
         core_1.Component({
             selector: "paDiscountDisplay",
             template: "<div class=\"bg-info p-a-1\">\n            The discount is {{discounter.discount}}\n            </div>"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [discount_service_1.DiscountService])
     ], PaDiscountDisplayComponent);
     return PaDiscountDisplayComponent;
 }());

@@ -10,10 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var repository_model_1 = require("./repository.model");
-var discount_service_1 = require("./discount.service");
 var ProductTableComponent = (function () {
     function ProductTableComponent() {
-        this.discounter = new discount_service_1.DiscountService();
         this.dateObject = new Date(2020, 1, 20);
         this.dateString = "2020-02-20T00:00:00.000Z";
         this.dateNumber = 1582156800000;

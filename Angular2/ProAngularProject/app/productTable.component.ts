@@ -8,7 +8,7 @@ import { DiscountService } from "./discount.service";
     templateUrl: "app/productTable.component.html"
 })
 export class ProductTableComponent {
-    discounter: DiscountService = new DiscountService();
+    //discounter: DiscountService = new DiscountService();
 
     @Input("model")
     dataModel: Model;
