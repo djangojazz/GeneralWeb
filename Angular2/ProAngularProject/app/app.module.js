@@ -25,6 +25,7 @@ var categoryFilter_pipe_1 = require("./categoryFilter.pipe");
 var discountDisplay_component_1 = require("./discountDisplay.component");
 var discountEditor_component_1 = require("./discountEditor.component");
 var discount_service_1 = require("./discount.service");
+var discount_pipe_1 = require("./discount.pipe");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -35,7 +36,8 @@ var AppModule = (function () {
                 paif_directive_1.PaStructureDirective, iterator_directive_1.PaIteratorDirective,
                 cellColor_directive_1.PaCellColor, cellColorSwitcher_directive_1.PaCellColorSwitcher, productTable_component_1.ProductTableComponent,
                 productForm_component_1.ProductFormComponent, addTax_pipe_1.PaAddTaxPipe, categoryFilter_pipe_1.PaCategoryFilterPipe,
-                discountDisplay_component_1.PaDiscountDisplayComponent, discountEditor_component_1.PaDiscountEditorComponent],
+                discountDisplay_component_1.PaDiscountDisplayComponent, discountEditor_component_1.PaDiscountEditorComponent,
+                discount_pipe_1.PaDiscountPipe],
             providers: [discount_service_1.DiscountService],
             bootstrap: [component_1.ProductComponent]
         }), 

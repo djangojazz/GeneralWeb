@@ -15,6 +15,7 @@ import { PaCategoryFilterPipe } from "./categoryFilter.pipe";
 import { PaDiscountDisplayComponent } from "./discountDisplay.component";
 import { PaDiscountEditorComponent } from "./discountEditor.component";
 import { DiscountService } from "./discount.service";
+import { PaDiscountPipe } from "./discount.pipe";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, ReactiveFormsModule],
@@ -22,7 +23,8 @@ import { DiscountService } from "./discount.service";
         PaStructureDirective, PaIteratorDirective,
         PaCellColor, PaCellColorSwitcher, ProductTableComponent, 
         ProductFormComponent, PaAddTaxPipe, PaCategoryFilterPipe,
-        PaDiscountDisplayComponent, PaDiscountEditorComponent],
+        PaDiscountDisplayComponent, PaDiscountEditorComponent,
+        PaDiscountPipe],
         providers: [DiscountService],
     bootstrap: [ProductComponent]
 })
