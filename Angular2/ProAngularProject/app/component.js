@@ -9,21 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var repository_model_1 = require("./repository.model");
+// import { Model } from "./repository.model";
+// import { Product } from "./product.model";
+// import { ProductFormGroup } from "./form.model";
 var ProductComponent = (function () {
-    //model: Model = new Model();
-    function ProductComponent(model) {
-        this.model = model;
+    function ProductComponent() {
     }
-    ProductComponent.prototype.addProduct = function (p) {
-        this.model.saveProduct(p);
-    };
     ProductComponent = __decorate([
         core_1.Component({
             selector: "app",
-            templateUrl: "app/template.html",
+            templateUrl: "app/template.html"
         }), 
-        __metadata('design:paramtypes', [repository_model_1.Model])
+        __metadata('design:paramtypes', [])
     ], ProductComponent);
     return ProductComponent;
 }());

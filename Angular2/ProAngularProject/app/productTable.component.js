@@ -11,11 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var repository_model_1 = require("./repository.model");
 var ProductTableComponent = (function () {
-    function ProductTableComponent() {
+    //discounter: DiscountService = new DiscountService();
+    function ProductTableComponent(dataModel) {
+        this.dataModel = dataModel;
         this.dateObject = new Date(2020, 1, 20);
         this.dateString = "2020-02-20T00:00:00.000Z";
         this.dateNumber = 1582156800000;
     }
+    // @Input("model")
+    // dataModel: Model;
     ProductTableComponent.prototype.getProduct = function (key) {
         return this.dataModel.getProduct(key);
     };
@@ -25,16 +29,12 @@ var ProductTableComponent = (function () {
     ProductTableComponent.prototype.deleteProduct = function (key) {
         this.dataModel.deleteProduct(key);
     };
-    __decorate([
-        core_1.Input("model"), 
-        __metadata('design:type', repository_model_1.Model)
-    ], ProductTableComponent.prototype, "dataModel", void 0);
     ProductTableComponent = __decorate([
         core_1.Component({
             selector: "paProductTable",
             templateUrl: "app/productTable.component.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [repository_model_1.Model])
     ], ProductTableComponent);
     return ProductTableComponent;
 }());
