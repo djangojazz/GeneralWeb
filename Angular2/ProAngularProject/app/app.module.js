@@ -27,6 +27,8 @@ var discountEditor_component_1 = require("./discountEditor.component");
 var discount_service_1 = require("./discount.service");
 var discount_pipe_1 = require("./discount.pipe");
 var discountAmount_directive_1 = require("./discountAmount.directive");
+var datasource_model_1 = require("./datasource.model");
+var repository_model_1 = require("./repository.model");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,7 +41,7 @@ var AppModule = (function () {
                 productForm_component_1.ProductFormComponent, addTax_pipe_1.PaAddTaxPipe, categoryFilter_pipe_1.PaCategoryFilterPipe,
                 discountDisplay_component_1.PaDiscountDisplayComponent, discountEditor_component_1.PaDiscountEditorComponent,
                 discount_pipe_1.PaDiscountPipe, discountAmount_directive_1.PaDiscountAmountDirective],
-            providers: [discount_service_1.DiscountService],
+            providers: [discount_service_1.DiscountService, datasource_model_1.SimpleDataSource, repository_model_1.Model],
             bootstrap: [component_1.ProductComponent]
         }), 
         __metadata('design:paramtypes', [])

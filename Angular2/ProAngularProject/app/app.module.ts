@@ -17,6 +17,8 @@ import { PaDiscountEditorComponent } from "./discountEditor.component";
 import { DiscountService } from "./discount.service";
 import { PaDiscountPipe } from "./discount.pipe";
 import { PaDiscountAmountDirective } from "./discountAmount.directive";
+import { SimpleDataSource } from "./datasource.model";
+import { Model } from "./repository.model";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, ReactiveFormsModule],
@@ -26,7 +28,7 @@ import { PaDiscountAmountDirective } from "./discountAmount.directive";
         ProductFormComponent, PaAddTaxPipe, PaCategoryFilterPipe,
         PaDiscountDisplayComponent, PaDiscountEditorComponent,
         PaDiscountPipe, PaDiscountAmountDirective],
-        providers: [DiscountService],
+    providers: [DiscountService, SimpleDataSource, Model],
     bootstrap: [ProductComponent]
 })
 export class AppModule { }

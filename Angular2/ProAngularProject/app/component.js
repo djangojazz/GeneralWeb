@@ -11,8 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var repository_model_1 = require("./repository.model");
 var ProductComponent = (function () {
-    function ProductComponent() {
-        this.model = new repository_model_1.Model();
+    //model: Model = new Model();
+    function ProductComponent(model) {
+        this.model = model;
     }
     ProductComponent.prototype.addProduct = function (p) {
         this.model.saveProduct(p);
@@ -22,7 +23,7 @@ var ProductComponent = (function () {
             selector: "app",
             templateUrl: "app/template.html",
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [repository_model_1.Model])
     ], ProductComponent);
     return ProductComponent;
 }());
