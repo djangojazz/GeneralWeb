@@ -30,7 +30,7 @@ import { LogService } from "./log.service";
         PaDiscountDisplayComponent, PaDiscountEditorComponent,
         PaDiscountPipe, PaDiscountAmountDirective],
     providers: [DiscountService, SimpleDataSource, Model, 
-        { provide: LogService, useClass: LogService}],
+        { provide: "logger", useClass: LogService}],
     bootstrap: [ProductComponent]
 })
 export class AppModule { }
