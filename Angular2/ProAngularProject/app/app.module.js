@@ -43,7 +43,7 @@ var AppModule = (function () {
                 discountDisplay_component_1.PaDiscountDisplayComponent, discountEditor_component_1.PaDiscountEditorComponent,
                 discount_pipe_1.PaDiscountPipe, discountAmount_directive_1.PaDiscountAmountDirective],
             providers: [discount_service_1.DiscountService, datasource_model_1.SimpleDataSource, repository_model_1.Model,
-                { provide: "logger", useClass: log_service_1.LogService }],
+                { provide: log_service_1.LOG_SERVICE, useClass: log_service_1.LogService }],
             bootstrap: [component_1.ProductComponent]
         }), 
         __metadata('design:paramtypes', [])

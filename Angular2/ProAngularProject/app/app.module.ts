@@ -19,7 +19,7 @@ import { PaDiscountPipe } from "./discount.pipe";
 import { PaDiscountAmountDirective } from "./discountAmount.directive";
 import { SimpleDataSource } from "./datasource.model";
 import { Model } from "./repository.model";
-import { LogService } from "./log.service";
+import { LogService, LOG_SERVICE } from "./log.service";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, ReactiveFormsModule],
@@ -30,7 +30,7 @@ import { LogService } from "./log.service";
         PaDiscountDisplayComponent, PaDiscountEditorComponent,
         PaDiscountPipe, PaDiscountAmountDirective],
     providers: [DiscountService, SimpleDataSource, Model, 
-        { provide: "logger", useClass: LogService}],
+        { provide: LOG_SERVICE, useClass: LogService}],
     bootstrap: [ProductComponent]
 })
 export class AppModule { }

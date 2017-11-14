@@ -1,4 +1,5 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OpaqueToken } from "@angular/core";
+export const LOG_SERVICE = new OpaqueToken("logger");
 
 export enum LogLevel {
     DEBUG, INFO, ERROR

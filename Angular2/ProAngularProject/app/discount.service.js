@@ -35,7 +35,7 @@ var DiscountService = (function () {
     };
     DiscountService = __decorate([
         core_1.Injectable(),
-        __param(0, core_1.Inject("logger")), 
+        __param(0, core_1.Inject(log_service_1.LOG_SERVICE)), 
         __metadata('design:paramtypes', [log_service_1.LogService])
     ], DiscountService);
     return DiscountService;
