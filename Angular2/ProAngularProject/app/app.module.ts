@@ -29,7 +29,8 @@ import { LogService } from "./log.service";
         ProductFormComponent, PaAddTaxPipe, PaCategoryFilterPipe,
         PaDiscountDisplayComponent, PaDiscountEditorComponent,
         PaDiscountPipe, PaDiscountAmountDirective],
-    providers: [DiscountService, SimpleDataSource, Model, LogService],
+    providers: [DiscountService, SimpleDataSource, Model, 
+        { provide: LogService, useClass: LogService}],
     bootstrap: [ProductComponent]
 })
 export class AppModule { }
