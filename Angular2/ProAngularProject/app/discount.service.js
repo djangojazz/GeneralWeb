@@ -9,8 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var log_service_1 = require("./log.service");
 var DiscountService = (function () {
-    function DiscountService() {
+    function DiscountService(logger) {
+        this.logger = logger;
         this.discountValue = 10;
     }
     Object.defineProperty(DiscountService.prototype, "discount", {
@@ -24,11 +26,13 @@ var DiscountService = (function () {
         configurable: true
     });
     DiscountService.prototype.applyDiscount = function (price) {
+        this.logger.logInfoMessage(("Discount " + this.discount)
+            + ("applied to price: " + price));
         return Math.max(price - this.discountValue, 5);
     };
     DiscountService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [log_service_1.LogService])
     ], DiscountService);
     return DiscountService;
 }());
