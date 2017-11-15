@@ -45,7 +45,7 @@ var AppModule = (function () {
                 discountDisplay_component_1.PaDiscountDisplayComponent, discountEditor_component_1.PaDiscountEditorComponent,
                 discount_pipe_1.PaDiscountPipe, discountAmount_directive_1.PaDiscountAmountDirective],
             providers: [discount_service_1.DiscountService, datasource_model_1.SimpleDataSource, repository_model_1.Model,
-                { provide: log_service_1.LOG_LEVEL, useValue: log_service_1.LogLevel.DEBUG },
+                { provide: log_service_1.LOG_LEVEL, useValue: log_service_1.LogLevel.ERROR },
                 { provide: "debugLevel", useExisting: log_service_1.LOG_LEVEL },
                 { provide: log_service_1.LogService,
                     deps: ["debugLevel"],

@@ -34,7 +34,7 @@ logger.minimumLevel = LogLevel.DEBUG;
         PaDiscountDisplayComponent, PaDiscountEditorComponent,
         PaDiscountPipe, PaDiscountAmountDirective],
     providers: [DiscountService, SimpleDataSource, Model, 
-        { provide: LOG_LEVEL, useValue: LogLevel.DEBUG },
+        { provide: LOG_LEVEL, useValue: LogLevel.ERROR },
         { provide: "debugLevel", useExisting: LOG_LEVEL },
         { provide: LogService, 
             deps: ["debugLevel"],
