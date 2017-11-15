@@ -8,9 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 var core_1 = require("@angular/core");
 var log_service_1 = require("./log.service");
 var DiscountService = (function () {
@@ -34,8 +31,7 @@ var DiscountService = (function () {
         return Math.max(price - this.discountValue, 5);
     };
     DiscountService = __decorate([
-        core_1.Injectable(),
-        __param(0, core_1.Inject(log_service_1.LOG_SERVICE)), 
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [log_service_1.LogService])
     ], DiscountService);
     return DiscountService;

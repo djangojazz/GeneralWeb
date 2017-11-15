@@ -30,6 +30,8 @@ var discountAmount_directive_1 = require("./discountAmount.directive");
 var datasource_model_1 = require("./datasource.model");
 var repository_model_1 = require("./repository.model");
 var log_service_1 = require("./log.service");
+var logger = new log_service_1.LogService();
+logger.minimumLevel = log_service_1.LogLevel.DEBUG;
 var AppModule = (function () {
     function AppModule() {
     }
@@ -43,7 +45,7 @@ var AppModule = (function () {
                 discountDisplay_component_1.PaDiscountDisplayComponent, discountEditor_component_1.PaDiscountEditorComponent,
                 discount_pipe_1.PaDiscountPipe, discountAmount_directive_1.PaDiscountAmountDirective],
             providers: [discount_service_1.DiscountService, datasource_model_1.SimpleDataSource, repository_model_1.Model,
-                { provide: log_service_1.LOG_SERVICE, useClass: log_service_1.LogService }],
+                { provide: log_service_1.LogService, useValue: logger }],
             bootstrap: [component_1.ProductComponent]
         }), 
         __metadata('design:paramtypes', [])

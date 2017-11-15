@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -31,7 +36,7 @@ var LogService = (function () {
     };
     LogService.prototype.logMessage = function (level, message) {
         if (level >= this.minimumLevel) {
-            console.log("Message (" + LogLevel[level] + "): " + message);
+            console.log("Message (" + LogLevel[level] + ") : " + message);
         }
     };
     LogService = __decorate([
@@ -41,3 +46,21 @@ var LogService = (function () {
     return LogService;
 }());
 exports.LogService = LogService;
+var SpecialLogService = (function (_super) {
+    __extends(SpecialLogService, _super);
+    function SpecialLogService() {
+        _super.call(this);
+        this.minimumLevel = LogLevel.DEBUG;
+    }
+    SpecialLogService.prototype.logMessage = function (level, message) {
+        if (level >= this.minimumLevel) {
+            console.log("Special Message (" + LogLevel[level] + "): " + message);
+        }
+    };
+    SpecialLogService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], SpecialLogService);
+    return SpecialLogService;
+}(LogService));
+exports.SpecialLogService = SpecialLogService;
