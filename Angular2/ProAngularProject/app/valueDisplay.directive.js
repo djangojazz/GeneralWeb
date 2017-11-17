@@ -15,7 +15,7 @@ var core_1 = require("@angular/core");
 exports.VALUE_SERVICE = new core_1.OpaqueToken("value_service");
 var PaDisplayValueDirective = (function () {
     function PaDisplayValueDirective(serviceValue) {
-        this.elementContent = serviceValue;
+        this.elementContent = serviceValue || "No Value";
     }
     __decorate([
         core_1.HostBinding("textContent"), 
@@ -25,7 +25,9 @@ var PaDisplayValueDirective = (function () {
         core_1.Directive({
             selector: "[paDisplayValue]"
         }),
-        __param(0, core_1.Inject(exports.VALUE_SERVICE)), 
+        __param(0, core_1.Inject(exports.VALUE_SERVICE)),
+        __param(0, core_1.Host()),
+        __param(0, core_1.Optional()), 
         __metadata('design:paramtypes', [String])
     ], PaDisplayValueDirective);
     return PaDisplayValueDirective;
