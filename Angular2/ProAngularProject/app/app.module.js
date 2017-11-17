@@ -30,6 +30,7 @@ var discountAmount_directive_1 = require("./discountAmount.directive");
 var datasource_model_1 = require("./datasource.model");
 var repository_model_1 = require("./repository.model");
 var log_service_1 = require("./log.service");
+var valueDisplay_directive_1 = require("./valueDisplay.directive");
 var logger = new log_service_1.LogService();
 logger.minimumLevel = log_service_1.LogLevel.DEBUG;
 var AppModule = (function () {
@@ -43,18 +44,9 @@ var AppModule = (function () {
                 cellColor_directive_1.PaCellColor, cellColorSwitcher_directive_1.PaCellColorSwitcher, productTable_component_1.ProductTableComponent,
                 productForm_component_1.ProductFormComponent, addTax_pipe_1.PaAddTaxPipe, categoryFilter_pipe_1.PaCategoryFilterPipe,
                 discountDisplay_component_1.PaDiscountDisplayComponent, discountEditor_component_1.PaDiscountEditorComponent,
-                discount_pipe_1.PaDiscountPipe, discountAmount_directive_1.PaDiscountAmountDirective],
-            providers: [discount_service_1.DiscountService, datasource_model_1.SimpleDataSource, repository_model_1.Model,
-                { provide: log_service_1.LOG_LEVEL, useValue: log_service_1.LogLevel.ERROR },
-                { provide: "debugLevel", useExisting: log_service_1.LOG_LEVEL },
-                { provide: log_service_1.LogService,
-                    deps: ["debugLevel"],
-                    useFactory: function (level) {
-                        var logger = new log_service_1.LogService();
-                        logger.minimumLevel = level;
-                        return logger;
-                    }
-                }],
+                discount_pipe_1.PaDiscountPipe, discountAmount_directive_1.PaDiscountAmountDirective, valueDisplay_directive_1.PaDisplayValueDirective],
+            providers: [discount_service_1.DiscountService, datasource_model_1.SimpleDataSource, repository_model_1.Model, log_service_1.LogService,
+                { provide: valueDisplay_directive_1.VALUE_SERVICE, useValue: "Apples" }],
             bootstrap: [component_1.ProductComponent]
         }), 
         __metadata('design:paramtypes', [])
