@@ -47,7 +47,7 @@ var AppModule = (function () {
                 discount_pipe_1.PaDiscountPipe, discountAmount_directive_1.PaDiscountAmountDirective, valueDisplay_directive_1.PaDisplayValueDirective],
             providers: [discount_service_1.DiscountService, datasource_model_1.SimpleDataSource, repository_model_1.Model, log_service_1.LogService,
                 { provide: valueDisplay_directive_1.VALUE_SERVICE, useValue: "Apples" }],
-            bootstrap: [component_1.ProductComponent]
+            bootstrap: [productForm_component_1.ProductFormComponent, productTable_component_1.ProductTableComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

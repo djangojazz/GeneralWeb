@@ -36,6 +36,6 @@ logger.minimumLevel = LogLevel.DEBUG;
         PaDiscountPipe, PaDiscountAmountDirective, PaDisplayValueDirective],
     providers: [DiscountService, SimpleDataSource, Model, LogService,
         { provide: VALUE_SERVICE, useValue: "Apples" }],
-    bootstrap: [ProductComponent]
+    bootstrap: [ProductFormComponent, ProductTableComponent]
 })
 export class AppModule { }
