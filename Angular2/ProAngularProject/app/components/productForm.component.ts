@@ -1,13 +1,14 @@
 import { Component, Output, EventEmitter, ViewEncapsulation,
             Inject, SkipSelf } from "@angular/core";
-import { Product } from "./model/product.model";
-import { ProductFormGroup } from "./model/form.model";
-import { Model } from "./model/repository.model";
-import { VALUE_SERVICE } from "./common/valueDisplay.directive";
+import { Product } from "../model/product.model";
+import { ProductFormGroup } from "../model/form.model";
+import { Model } from "../model/repository.model";
+import { VALUE_SERVICE } from "../common/valueDisplay.directive";
 
 @Component({
     selector: "paProductForm",
-    templateUrl: "app/productForm.component.html",
+    moduleId: module.id,
+    templateUrl: "productForm.component.html",
     providers: [{ provide: VALUE_SERVICE, useValue: "Oranges"}]
 })
 export class ProductFormComponent {

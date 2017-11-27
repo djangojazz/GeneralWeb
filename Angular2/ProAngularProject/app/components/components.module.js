@@ -10,23 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var common_module_1 = require("../common/common.module");
 var forms_1 = require("@angular/forms");
-var productTable_component_1 = require("./components/productTable.component");
-var productForm_component_1 = require("./components/productForm.component");
-var model_module_1 = require("./model/model.module");
-var common_module_1 = require("./common/common.module");
-var components_module_1 = require("./components/components.module");
-var AppModule = (function () {
-    function AppModule() {
+var discountDisplay_component_1 = require("./discountDisplay.component");
+var discountEditor_component_1 = require("./discountEditor.component");
+var productForm_component_1 = require("./productForm.component");
+var productTable_component_1 = require("./productTable.component");
+var ComponentsModule = (function () {
+    function ComponentsModule() {
     }
-    AppModule = __decorate([
+    ComponentsModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule,
-                model_module_1.ModelModule, common_module_1.CommonModule, components_module_1.ComponentsModule],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, common_module_1.CommonModule],
+            declarations: [discountDisplay_component_1.PaDiscountDisplayComponent, discountEditor_component_1.PaDiscountEditorComponent,
+                productForm_component_1.ProductFormComponent, productTable_component_1.ProductTableComponent],
             bootstrap: [productForm_component_1.ProductFormComponent, productTable_component_1.ProductTableComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], ComponentsModule);
+    return ComponentsModule;
 }());
-exports.AppModule = AppModule;
+exports.ComponentsModule = ComponentsModule;

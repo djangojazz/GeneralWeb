@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var PaToggleView = (function () {
-    function PaToggleView() {
-        this.showContent = true;
+var discount_service_1 = require("../common/discount.service");
+var PaDiscountEditorComponent = (function () {
+    function PaDiscountEditorComponent(discounter) {
+        this.discounter = discounter;
     }
-    PaToggleView = __decorate([
+    PaDiscountEditorComponent = __decorate([
         core_1.Component({
-            selector: "paToggleView",
-            templateUrl: "app/toggleView.component.html"
+            selector: "paDiscountEditor",
+            template: "<div class=\"form-group\">\n                    <label>Discount</label>\n                    <input [(ngModel)]=\"discounter.discount\"\n                        class=\"form-control\" type=\"number\" />\n            </div>"
         }), 
-        __metadata('design:paramtypes', [])
-    ], PaToggleView);
-    return PaToggleView;
+        __metadata('design:paramtypes', [discount_service_1.DiscountService])
+    ], PaDiscountEditorComponent);
+    return PaDiscountEditorComponent;
 }());
-exports.PaToggleView = PaToggleView;
+exports.PaDiscountEditorComponent = PaDiscountEditorComponent;
