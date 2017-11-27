@@ -15,7 +15,7 @@ var core_1 = require("@angular/core");
 var product_model_1 = require("./model/product.model");
 var form_model_1 = require("./model/form.model");
 var repository_model_1 = require("./model/repository.model");
-var valueDisplay_directive_1 = require("./valueDisplay.directive");
+var valueDisplay_directive_1 = require("./common/valueDisplay.directive");
 var ProductFormComponent = (function () {
     function ProductFormComponent(model, serviceValue) {
         this.model = model;

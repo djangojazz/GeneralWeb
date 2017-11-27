@@ -2,39 +2,18 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { ProductComponent } from "./component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { PaAttrDirective } from "./attr.directive";
-import { PaModel } from "./twoway.directive";
-import { PaStructureDirective } from "./paif.directive";
-import { PaIteratorDirective } from "./iterator.directive";
-import { PaCellColor } from "./cellColor.directive";
-import { PaCellColorSwitcher } from "./cellColorSwitcher.directive";
 import { ProductTableComponent } from "./productTable.component";
 import { ProductFormComponent } from "./productForm.component";
-import { PaAddTaxPipe } from "./addTax.pipe";
-import { PaCategoryFilterPipe } from "./categoryFilter.pipe";
 import { PaDiscountDisplayComponent } from "./discountDisplay.component";
 import { PaDiscountEditorComponent } from "./discountEditor.component";
-import { DiscountService } from "./discount.service";
-import { PaDiscountPipe } from "./discount.pipe";
-import { PaDiscountAmountDirective } from "./discountAmount.directive";
 import { ModelModule } from "./model/model.module";
-import { LogService, LOG_SERVICE, SpecialLogService, 
-            LogLevel, LOG_LEVEL } from "./log.service";
-import {VALUE_SERVICE, PaDisplayValueDirective } from "./valueDisplay.directive";
-
-let logger = new LogService();
-logger.minimumLevel = LogLevel.DEBUG;
+import { CommonModule } from "./common/common.module";
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, ReactiveFormsModule, ModelModule],
-    declarations: [ProductComponent, PaAttrDirective, PaModel, 
-        PaStructureDirective, PaIteratorDirective,
-        PaCellColor, PaCellColorSwitcher, ProductTableComponent, 
-        ProductFormComponent, PaAddTaxPipe, PaCategoryFilterPipe,
-        PaDiscountDisplayComponent, PaDiscountEditorComponent,
-        PaDiscountPipe, PaDiscountAmountDirective, PaDisplayValueDirective],
-    providers: [DiscountService, LogService,
-        { provide: VALUE_SERVICE, useValue: "Apples" }],
+    imports: [BrowserModule, FormsModule, ReactiveFormsModule, 
+        ModelModule, CommonModule],
+    declarations: [ProductComponent, ProductTableComponent, 
+        ProductFormComponent, PaDiscountDisplayComponent, PaDiscountEditorComponent],
     bootstrap: [ProductFormComponent, ProductTableComponent]
 })
 export class AppModule { }
