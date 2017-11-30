@@ -1,30 +1,36 @@
-import { Component, Input, ViewChildren, QueryList } from "@angular/core";
-import { Model } from "../model/repository.model";
+import { Component } from "@angular/core";
 import { Product } from "../model/product.model";
-import { DiscountService } from "../common/discount.service";
+import { Model } from "../model/repository.model";
+import { MODES, SharedState } from "./sharedState.model";
 
 @Component({
-    selector: "paProductTable",
-    templateUrl: "app/components/productTable.component.html"
+    selector: "paTable",
+    moduleId: module.id,
+    templateUrl: "productTable.component.html"
 })
 export class ProductTableComponent {
-    //discounter: DiscountService = new DiscountService();
-
-    constructor(private dataModel: Model) {}
-
-    // @Input("model")
-    // dataModel: Model;
+    constructor(private model: Model, private state: SharedState) {}
 
     getProduct(key: number): Product {
-        return this.dataModel.getProduct(key);
+        return this.model.getProduct(key);
     }
 
     getProducts(): Product[] {
-        return this.dataModel.getProducts();
+        return this.model.getProducts();
     }
 
     deleteProduct(key: number) {
-        this.dataModel.deleteProduct(key);
+        this.model.deleteProduct(key);
+    }
+
+    editProduct(key: number) {
+        this.state.id = key;
+        this.state.mode = MODES.EDIT;
+    }
+
+    createProduct() {
+        this.state.id = undefined;
+        this.state.mode = MODES.CREATE;
     }
 
     dateObject: Date = new Date(2020, 1, 20);
