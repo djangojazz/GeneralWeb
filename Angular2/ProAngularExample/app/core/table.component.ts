@@ -8,7 +8,7 @@ import { MODES, SharedState } from "./sharedState.model";
     moduleId: module.id,
     templateUrl: "productTable.component.html"
 })
-export class ProductTableComponent {
+export class TableComponent {
     constructor(private model: Model, private state: SharedState) {}
 
     getProduct(key: number): Product {
