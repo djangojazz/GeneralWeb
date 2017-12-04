@@ -15,9 +15,6 @@ var TableComponent = (function () {
     function TableComponent(model, state) {
         this.model = model;
         this.state = state;
-        this.dateObject = new Date(2020, 1, 20);
-        this.dateString = "2020-02-20T00:00:00.000Z";
-        this.dateNumber = 1582156800000;
     }
     TableComponent.prototype.getProduct = function (key) {
         return this.model.getProduct(key);
@@ -40,7 +37,7 @@ var TableComponent = (function () {
         core_1.Component({
             selector: "paTable",
             moduleId: module.id,
-            templateUrl: "productTable.component.html"
+            templateUrl: "table.component.html"
         }), 
         __metadata('design:paramtypes', [repository_model_1.Model, sharedState_model_1.SharedState])
     ], TableComponent);

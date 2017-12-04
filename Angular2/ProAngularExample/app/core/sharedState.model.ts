@@ -1,4 +1,4 @@
-export enum MODES {
+﻿export enum MODES {
     CREATE, EDIT
 }
 
