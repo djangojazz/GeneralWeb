@@ -11,3 +11,4 @@ var SharedState = (function () {
     return SharedState;
 }());
 exports.SharedState = SharedState;
+//# sourceMappingURL=sharedState.model.js.map

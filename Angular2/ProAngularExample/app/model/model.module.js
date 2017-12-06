@@ -23,3 +23,4 @@ var ModelModule = (function () {
     return ModelModule;
 }());
 exports.ModelModule = ModelModule;
+//# sourceMappingURL=model.module.js.map

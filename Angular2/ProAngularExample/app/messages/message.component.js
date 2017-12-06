@@ -26,3 +26,4 @@ var MessageComponent = (function () {
     return MessageComponent;
 }());
 exports.MessageComponent = MessageComponent;
+//# sourceMappingURL=message.component.js.map

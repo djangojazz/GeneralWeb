@@ -2,6 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch via NPM ProAngular Example",
+            "runtimeExecutable": "npm",
+            "args": ["${relativeFile}"],
+            "runtimeArgs": [
+                "run-script",
+                "debug"
+            ],
+            "port": 3002
+        },
+        {
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",

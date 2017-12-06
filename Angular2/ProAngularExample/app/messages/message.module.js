@@ -27,3 +27,4 @@ var MessageModule = (function () {
     return MessageModule;
 }());
 exports.MessageModule = MessageModule;
+//# sourceMappingURL=message.module.js.map
