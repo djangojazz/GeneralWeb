@@ -9,17 +9,14 @@
             "request": "launch",
             "name": "Launch via NPM ProAngular Example",
             "runtimeExecutable": "npm",
-            "args": ["${relativeFile}"],
-            "runtimeArgs": [
-                "start"
-            ]
+            "runtimeArgs": [ "start" ]
         },
         {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome with ng serve",
-            "url": "http://localhost:3002",
+            "url": "http://localhost:3000",
             "webRoot": "${workspaceRoot}"
-          }
+        }
     ]
 }
