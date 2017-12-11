@@ -6,6 +6,8 @@ import { MODES, SharedState, SHARED_STATE } from "./sharedState.model";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/map";
+import "rxjs/add/operator/distinctUntilChanged";
+import "rxjs/add/operator/skipWhile";
 
 @Component({
     selector: "paForm",
@@ -20,15 +22,16 @@ export class FormComponent {
         @Inject(SHARED_STATE) private stateEvents: Observable<SharedState>){
         
         stateEvents
-            .map(state => new SharedState(state.mode, state.id == 5 ? 1 : state.id))
-            .filter(state => state.id != 3)
-            .subscribe((update) => {
+            .skipWhile(state => state.mode == MODES.EDIT)
+            .distinctUntilChanged((firstState, secondState) =>
+                firstState.mode == secondState.mode && firstState.id == secondState.id)
+            .subscribe(update => {
             this.product = new Product();
             if(update.id != undefined) {
                 Object.assign(this.product, this.model.getProduct(update.id));
             }
             this.editing = update.mode == MODES.EDIT;
-        })
+        });
     }
 
     editing: boolean = false;
