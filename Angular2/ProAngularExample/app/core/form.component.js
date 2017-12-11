@@ -16,6 +16,8 @@ var product_model_1 = require("../model/product.model");
 var repository_model_1 = require("../model/repository.model");
 var sharedState_model_1 = require("./sharedState.model");
 var Observable_1 = require("rxjs/Observable");
+require("rxjs/add/operator/filter");
+require("rxjs/add/operator/map");
 var FormComponent = (function () {
     function FormComponent(model, stateEvents) {
         var _this = this;
@@ -23,7 +25,10 @@ var FormComponent = (function () {
         this.stateEvents = stateEvents;
         this.product = new product_model_1.Product();
         this.editing = false;
-        stateEvents.subscribe(function (update) {
+        stateEvents
+            .map(function (state) { return new sharedState_model_1.SharedState(state.mode, state.id == 5 ? 1 : state.id); })
+            .filter(function (state) { return state.id != 3; })
+            .subscribe(function (update) {
             _this.product = new product_model_1.Product();
             if (update.id != undefined) {
                 Object.assign(_this.product, _this.model.getProduct(update.id));
