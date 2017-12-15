@@ -8,23 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-//import { StaticDataSource } from "./static.datasource";
-var repository_model_1 = require("./repository.model");
-var rest_datasource_1 = require("./rest.datasource");
-var ModelModule = (function () {
-    function ModelModule() {
+require("rxjs/add/operator/map");
+exports.REST_URL = new core_1.OpaqueToken("rest_url");
+var RestDataSource = (function () {
+    function RestDataSource(http, url) {
+        this.http = http;
+        this.url = url;
     }
-    ModelModule = __decorate([
-        core_1.NgModule({
-            imports: [http_1.HttpModule],
-            providers: [repository_model_1.Model, rest_datasource_1.RestDataSource,
-                { provide: rest_datasource_1.REST_URL, useValue: "http://" + location.hostname + ":3500/products" }]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], ModelModule);
-    return ModelModule;
+    RestDataSource.prototype.getData = function () {
+        return this.http.get(this.url).map(function (response) { return response.json(); });
+    };
+    RestDataSource = __decorate([
+        core_1.Injectable(),
+        __param(1, core_1.Inject(exports.REST_URL)), 
+        __metadata('design:paramtypes', [http_1.Http, String])
+    ], RestDataSource);
+    return RestDataSource;
 }());
-exports.ModelModule = ModelModule;
-//# sourceMappingURL=model.module.js.map
+exports.RestDataSource = RestDataSource;
+//# sourceMappingURL=rest.datasource.js.map

@@ -9,14 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var static_datasource_1 = require("./static.datasource");
+var rest_datasource_1 = require("./rest.datasource");
 var Model = (function () {
     function Model(dataSource) {
         var _this = this;
         this.dataSource = dataSource;
-        this.locator = function (p, id) { return p.id == id; };
         this.products = new Array();
-        this.dataSource.getData().forEach(function (p) { return _this.products.push(p); });
+        this.locator = function (p, id) { return p.id == id; };
+        // this.products = new Array<Product>();
+        // this.dataSource.getData().forEach(p => this.products.push(p));
+        this.dataSource.getData().subscribe(function (data) { return _this.products = data; });
     }
     Model.prototype.getProducts = function () {
         return this.products;
@@ -53,7 +55,7 @@ var Model = (function () {
     };
     Model = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [static_datasource_1.StaticDataSource])
+        __metadata('design:paramtypes', [rest_datasource_1.RestDataSource])
     ], Model);
     return Model;
 }());
