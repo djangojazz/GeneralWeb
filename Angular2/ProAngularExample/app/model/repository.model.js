@@ -30,21 +30,25 @@ var Model = (function () {
     Model.prototype.saveProduct = function (product) {
         var _this = this;
         if (product.id == 0 || product.id == null) {
-            product.id = this.generateID();
-            this.products.push(product);
+            this.dataSource.saveProduct(product)
+                .subscribe(function (p) { return _this.products.push(p); });
         }
         else {
-            var index = this.products
-                .findIndex(function (p) { return _this.locator(p, product.id); });
-            this.products.splice(index, 1, product);
+            this.dataSource.updateProduct(product).subscribe(function (p) {
+                var index = _this.products
+                    .findIndex(function (item) { return _this.locator(item, p.id); });
+                _this.products.splice(index, 1, p);
+            });
         }
     };
     Model.prototype.deleteProduct = function (id) {
         var _this = this;
-        var index = this.products.findIndex(function (p) { return _this.locator(p, id); });
-        if (index > -1) {
-            this.products.splice(index, 1);
-        }
+        this.dataSource.deleteProduct(id).subscribe(function () {
+            var index = _this.products.findIndex(function (p) { return _this.locator(p, id); });
+            if (index > -1) {
+                _this.products.splice(index, 1);
+            }
+        });
     };
     Model.prototype.generateID = function () {
         var candidate = 100;

@@ -23,6 +23,18 @@ var RestDataSource = (function () {
     RestDataSource.prototype.getData = function () {
         return this.http.get(this.url).map(function (response) { return response.json(); });
     };
+    RestDataSource.prototype.saveProduct = function (product) {
+        return this.http.post(this.url, product)
+            .map(function (response) { return response.json(); });
+    };
+    RestDataSource.prototype.updateProduct = function (product) {
+        return this.http.put(this.url + "/" + product.id, product)
+            .map(function (response) { return response.json(); });
+    };
+    RestDataSource.prototype.deleteProduct = function (id) {
+        return this.http.delete(this.url + "/" + id)
+            .map(function (response) { return response.json(); });
+    };
     RestDataSource = __decorate([
         core_1.Injectable(),
         __param(1, core_1.Inject(exports.REST_URL)), 
