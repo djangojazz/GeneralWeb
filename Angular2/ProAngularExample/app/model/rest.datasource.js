@@ -21,19 +21,23 @@ var RestDataSource = (function () {
         this.url = url;
     }
     RestDataSource.prototype.getData = function () {
-        return this.http.get(this.url).map(function (response) { return response.json(); });
+        return this.sendRequest(http_1.RequestMethod.Get, this.url);
     };
     RestDataSource.prototype.saveProduct = function (product) {
-        return this.http.post(this.url, product)
-            .map(function (response) { return response.json(); });
+        return this.sendRequest(http_1.RequestMethod.Post, this.url, product);
     };
     RestDataSource.prototype.updateProduct = function (product) {
-        return this.http.put(this.url + "/" + product.id, product)
-            .map(function (response) { return response.json(); });
+        return this.sendRequest(http_1.RequestMethod.Put, this.url + "/" + product.id, product);
     };
     RestDataSource.prototype.deleteProduct = function (id) {
-        return this.http.delete(this.url + "/" + id)
-            .map(function (response) { return response.json(); });
+        return this.sendRequest(http_1.RequestMethod.Delete, this.url + "/" + id);
+    };
+    RestDataSource.prototype.sendRequest = function (verb, url, body) {
+        return this.http.request(new http_1.Request({
+            method: verb,
+            url: url,
+            body: body
+        })).map(function (response) { return response.json(); });
     };
     RestDataSource = __decorate([
         core_1.Injectable(),
