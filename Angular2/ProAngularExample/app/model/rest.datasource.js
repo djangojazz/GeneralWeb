@@ -16,12 +16,15 @@ var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 exports.REST_URL = new core_1.OpaqueToken("rest_url");
 var RestDataSource = (function () {
-    function RestDataSource(http, url) {
+    function RestDataSource(http, jsonp, url) {
         this.http = http;
+        this.jsonp = jsonp;
         this.url = url;
     }
     RestDataSource.prototype.getData = function () {
-        return this.sendRequest(http_1.RequestMethod.Get, this.url);
+        return this.jsonp.get(this.url + "?callback=JSONP_CALLBACK")
+            .map(function (response) { return response.json(); });
+        //return this.sendRequest(RequestMethod.Get, this.url);
     };
     RestDataSource.prototype.saveProduct = function (product) {
         return this.sendRequest(http_1.RequestMethod.Post, this.url, product);
@@ -41,8 +44,8 @@ var RestDataSource = (function () {
     };
     RestDataSource = __decorate([
         core_1.Injectable(),
-        __param(1, core_1.Inject(exports.REST_URL)), 
-        __metadata('design:paramtypes', [http_1.Http, String])
+        __param(2, core_1.Inject(exports.REST_URL)), 
+        __metadata('design:paramtypes', [http_1.Http, http_1.Jsonp, String])
     ], RestDataSource);
     return RestDataSource;
 }());
