@@ -19,9 +19,7 @@ var Subject_1 = require("rxjs/Subject");
 var state_pipe_1 = require("./state.pipe");
 var message_module_1 = require("../messages/message.module");
 var message_service_1 = require("../messages/message.service");
-var message_model_1 = require("../messages/message.model");
 var repository_model_1 = require("../model/repository.model");
-var sharedState_model_2 = require("./sharedState.model");
 var CoreModule = (function () {
     function CoreModule() {
     }
@@ -34,10 +32,12 @@ var CoreModule = (function () {
                     provide: sharedState_model_1.SHARED_STATE,
                     deps: [message_service_1.MessageService, repository_model_1.Model],
                     useFactory: function (MessageService, model) {
-                        var subject = new Subject_1.Subject();
-                        subject.subscribe(function (m) { return MessageService.reportMessage(new message_model_1.Message(sharedState_model_2.MODES[m.mode] + (m.id != undefined
-                            ? " " + model.getProduct(m.id).name : ""))); });
-                        return subject;
+                        return new Subject_1.Subject();
+                        // subject.subscribe(m => MessageService.reportMessage(
+                        //     new Message(MODES[m.mode] + (m.id != undefined 
+                        //         ? ` ${model.getProduct(m.id).name}` : "")))
+                        // );
+                        // return subject;
                     }
                 }]
         }), 
