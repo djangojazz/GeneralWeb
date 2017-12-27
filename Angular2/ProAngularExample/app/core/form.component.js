@@ -23,7 +23,11 @@ var FormComponent = (function () {
         this.model = model;
         this.product = new product_model_1.Product();
         this.editing = false;
-        this.editing = activeRoute.snapshot.url[1].path == "edit";
+        this.editing = activeRoute.snapshot.params["mode"] == "edit";
+        var id = activeRoute.snapshot.params["id"];
+        if (id != null) {
+            Object.assign(this.product, model.getProduct(id) || new product_model_1.Product());
+        }
     }
     FormComponent.prototype.submitForm = function (form) {
         if (form.valid) {
