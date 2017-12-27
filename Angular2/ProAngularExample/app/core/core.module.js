@@ -20,12 +20,13 @@ var state_pipe_1 = require("./state.pipe");
 var message_module_1 = require("../messages/message.module");
 var message_service_1 = require("../messages/message.service");
 var repository_model_1 = require("../model/repository.model");
+var router_1 = require("@angular/router");
 var CoreModule = (function () {
     function CoreModule() {
     }
     CoreModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, model_module_1.ModelModule, message_module_1.MessageModule],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, model_module_1.ModelModule, message_module_1.MessageModule, router_1.RouterModule],
             declarations: [table_component_1.TableComponent, form_component_1.FormComponent, state_pipe_1.StatePipe],
             exports: [model_module_1.ModelModule, table_component_1.TableComponent, form_component_1.FormComponent],
             providers: [{
