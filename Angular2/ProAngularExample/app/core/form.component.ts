@@ -8,7 +8,7 @@ import { Model } from "../model/repository.model";
 // import "rxjs/add/operator/map";
 // import "rxjs/add/operator/distinctUntilChanged";
 // import "rxjs/add/operator/skipWhile";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: "paForm",
@@ -19,8 +19,11 @@ import { ActivatedRoute } from "@angular/router";
 export class FormComponent {
     product: Product = new Product();
     
-    constructor(private model: Model, activeRoute: ActivatedRoute){
+    constructor(private model: Model, activeRoute: ActivatedRoute,
+            private router: Router){
+
         this.editing = activeRoute.snapshot.params["mode"] == "edit";
+
         let id = activeRoute.snapshot.params["id"];
         if(id != null) {
             let name = activeRoute.snapshot.params["name"];
@@ -43,8 +46,9 @@ export class FormComponent {
     submitForm(form: NgForm) {
         if (form.valid) {
             this.model.saveProduct(this.product);
-            this.product = new Product();
-            form.reset();
+            //this.product = new Product();
+            //form.reset();
+            this.router.navigateByUrl("/");
         }
     }
 

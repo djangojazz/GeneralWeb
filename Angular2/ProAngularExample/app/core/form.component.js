@@ -19,8 +19,9 @@ var repository_model_1 = require("../model/repository.model");
 // import "rxjs/add/operator/skipWhile";
 var router_1 = require("@angular/router");
 var FormComponent = (function () {
-    function FormComponent(model, activeRoute) {
+    function FormComponent(model, activeRoute, router) {
         this.model = model;
+        this.router = router;
         this.product = new product_model_1.Product();
         this.editing = false;
         this.editing = activeRoute.snapshot.params["mode"] == "edit";
@@ -43,8 +44,9 @@ var FormComponent = (function () {
     FormComponent.prototype.submitForm = function (form) {
         if (form.valid) {
             this.model.saveProduct(this.product);
-            this.product = new product_model_1.Product();
-            form.reset();
+            //this.product = new Product();
+            //form.reset();
+            this.router.navigateByUrl("/");
         }
     };
     FormComponent.prototype.resetForm = function () {
@@ -57,7 +59,7 @@ var FormComponent = (function () {
             templateUrl: "form.component.html",
             styleUrls: ["form.component.css"]
         }), 
-        __metadata('design:paramtypes', [repository_model_1.Model, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [repository_model_1.Model, router_1.ActivatedRoute, router_1.Router])
     ], FormComponent);
     return FormComponent;
 }());
