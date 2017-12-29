@@ -14,12 +14,9 @@ var forms_1 = require("@angular/forms");
 var model_module_1 = require("../model/model.module");
 var table_component_1 = require("./table.component");
 var form_component_1 = require("./form.component");
-var sharedState_model_1 = require("./sharedState.model");
-var Subject_1 = require("rxjs/Subject");
 var state_pipe_1 = require("./state.pipe");
 var message_module_1 = require("../messages/message.module");
-var message_service_1 = require("../messages/message.service");
-var repository_model_1 = require("../model/repository.model");
+//import { MODES } from "./sharedState.model";
 var router_1 = require("@angular/router");
 var CoreModule = (function () {
     function CoreModule() {
@@ -29,18 +26,6 @@ var CoreModule = (function () {
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, model_module_1.ModelModule, message_module_1.MessageModule, router_1.RouterModule],
             declarations: [table_component_1.TableComponent, form_component_1.FormComponent, state_pipe_1.StatePipe],
             exports: [model_module_1.ModelModule, table_component_1.TableComponent, form_component_1.FormComponent],
-            providers: [{
-                    provide: sharedState_model_1.SHARED_STATE,
-                    deps: [message_service_1.MessageService, repository_model_1.Model],
-                    useFactory: function (MessageService, model) {
-                        return new Subject_1.Subject();
-                        // subject.subscribe(m => MessageService.reportMessage(
-                        //     new Message(MODES[m.mode] + (m.id != undefined 
-                        //         ? ` ${model.getProduct(m.id).name}` : "")))
-                        // );
-                        // return subject;
-                    }
-                }]
         }), 
         __metadata('design:paramtypes', [])
     ], CoreModule);
