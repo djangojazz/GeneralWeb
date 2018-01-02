@@ -11,12 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var product_model_1 = require("../model/product.model");
 var repository_model_1 = require("../model/repository.model");
-// import { MODES, SharedState, SHARED_STATE } from "./sharedState.model";
-// import { Observable } from "rxjs/Observable";
-// import "rxjs/add/operator/filter";
-// import "rxjs/add/operator/map";
-// import "rxjs/add/operator/distinctUntilChanged";
-// import "rxjs/add/operator/skipWhile";
 var router_1 = require("@angular/router");
 var FormComponent = (function () {
     function FormComponent(model, activeRoute, router) {
@@ -27,25 +21,12 @@ var FormComponent = (function () {
         this.editing = activeRoute.snapshot.params["mode"] == "edit";
         var id = activeRoute.snapshot.params["id"];
         if (id != null) {
-            var name_1 = activeRoute.snapshot.params["name"];
-            var category = activeRoute.snapshot.params["category"];
-            var price = activeRoute.snapshot.params["price"];
-            if (name_1 != null && category != null && price != null) {
-                this.product.id = id;
-                this.product.name = name_1;
-                this.product.category = category;
-                this.product.price = Number.parseFloat(price);
-            }
-            else {
-                Object.assign(this.product, model.getProduct(id) || new product_model_1.Product());
-            }
+            Object.assign(this.product, model.getProduct(id) || new product_model_1.Product());
         }
     }
     FormComponent.prototype.submitForm = function (form) {
         if (form.valid) {
             this.model.saveProduct(this.product);
-            //this.product = new Product();
-            //form.reset();
             this.router.navigateByUrl("/");
         }
     };
