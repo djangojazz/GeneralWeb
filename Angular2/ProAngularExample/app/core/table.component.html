@@ -1,6 +1,7 @@
 ﻿<div class="col-xs-3">
     <button class="btn btn-secondary btn-block"
-        routerLink="/" routerLinkActive="active">
+        routerLink="/table" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
         All
     </button>
     <button *ngFor="let category of categories" class="btn btn-secondary btn-block"
