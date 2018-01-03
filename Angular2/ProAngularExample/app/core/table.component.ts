@@ -9,6 +9,7 @@ import { ActivatedRoute } from "@angular/router";
     templateUrl: "table.component.html"
 })
 export class TableComponent {
+    category: string = null;
 
     constructor(private model: Model, activeRoute: ActivatedRoute) { 
         activeRoute.params.subscribe(params => {

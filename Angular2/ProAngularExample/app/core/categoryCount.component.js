@@ -11,16 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var repository_model_1 = require("../model/repository.model");
 var CategoryCountComponent = (function () {
-    function CategoryCountComponent(model, keyValueDiffers, changDetector) {
+    function CategoryCountComponent(model, keyValueDiffers, changeDetector) {
         this.model = model;
         this.keyValueDiffers = keyValueDiffers;
-        this.changDetector = changDetector;
+        this.changeDetector = changeDetector;
         this.count = 0;
     }
-    CategoryCountComponent.prototype.ngOnIntit = function () {
+    CategoryCountComponent.prototype.ngOnInit = function () {
         this.differ = this.keyValueDiffers
             .find(this.model.getProducts())
-            .create(this.changDetector);
+            .create(this.changeDetector);
     };
     CategoryCountComponent.prototype.ngDoCheck = function () {
         if (this.differ.diff(this.model.getProducts()) != null) {

@@ -1,5 +1,7 @@
-import { Component, KeyValueDiffer,
-            KeyValueDiffers, ChangeDetectorRef } from "@angular/core";
+import { 
+    Component, KeyValueDiffer,
+    KeyValueDiffers, ChangeDetectorRef 
+} from "@angular/core";
 import { Model } from "../model/repository.model";
 
 @Component({
@@ -12,16 +14,16 @@ export class CategoryCountComponent {
 
     constructor(private model: Model,
         private keyValueDiffers: KeyValueDiffers,
-        private changDetector: ChangeDetectorRef) {}
+        private changeDetector: ChangeDetectorRef) {}
 
-    ngOnIntit() {
+    ngOnInit() {
         this.differ = this.keyValueDiffers
             .find(this.model.getProducts())
-            .create(this.changDetector);
+            .create(this.changeDetector);
     }
 
     ngDoCheck() {
-        if(this.differ.diff(this.model.getProducts()) != null) {
+        if (this.differ.diff(this.model.getProducts()) != null) {
             this.count = this.model.getProducts()
                 .map(p => p.category)
                 .filter((category, index, array) => array.indexOf(category) == index)

@@ -15,6 +15,7 @@ var TableComponent = (function () {
     function TableComponent(model, activeRoute) {
         var _this = this;
         this.model = model;
+        this.category = null;
         activeRoute.params.subscribe(function (params) {
             _this.category = params["category"] || null;
         });
