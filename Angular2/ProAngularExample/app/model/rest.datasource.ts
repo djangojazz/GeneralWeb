@@ -42,7 +42,7 @@ export class RestDataSource {
             url: url,
             body: body,
             headers: headers
-        })).delay(5000)
+        })).delay(2000)
             .map(response => response.json())
             .catch((error: Response) => Observable.throw(
                 `Network Error: ${error.statusText} (${error.status})`));
