@@ -35,6 +35,25 @@ var TermsGuard = (function () {
             return true;
         }
     };
+    TermsGuard.prototype.canActivateChild = function (route, state) {
+        var _this = this;
+        if (route.url.length > 0
+            && route.url[route.url.length - 1].path == "categories") {
+            return new Promise(function (resolve, reject) {
+                var responses = [
+                    ["Yes", function () { resolve(true); }],
+                    ["No ", function () {
+                            _this.router.navigateByUrl(state.url.replace("categories", "products"));
+                            resolve(false);
+                        }]
+                ];
+                _this.messages.reportMessage(new message_model_1.Message("Do you want to see the cageories component?", false, responses));
+            });
+        }
+        else {
+            return true;
+        }
+    };
     TermsGuard = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [message_service_1.MessageService, router_1.Router])

@@ -9,6 +9,7 @@ var model_resolver_1 = require("./model/model.resolver");
 var terms_guard_1 = require("./terms.guard");
 var childRoutes = [
     { path: "",
+        canActivateChild: [terms_guard_1.TermsGuard],
         children: [{ path: "products", component: productCount_component_1.ProductCountComponent },
             { path: "categories", component: categoryCount_component_1.CategoryCountComponent },
             { path: "", component: productCount_component_1.ProductCountComponent }],
