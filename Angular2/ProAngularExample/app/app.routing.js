@@ -7,6 +7,7 @@ var productCount_component_1 = require("./core/productCount.component");
 var categoryCount_component_1 = require("./core/categoryCount.component");
 var model_resolver_1 = require("./model/model.resolver");
 var terms_guard_1 = require("./terms.guard");
+var unsaved_guard_1 = require("./core/unsaved.guard");
 var childRoutes = [
     { path: "",
         canActivateChild: [terms_guard_1.TermsGuard],
@@ -19,7 +20,8 @@ var childRoutes = [
 var routes = [
     {
         path: "form/:mode/:id", component: form_component_1.FormComponent,
-        resolve: { model: model_resolver_1.ModelResolver }
+        resolve: { model: model_resolver_1.ModelResolver },
+        canDeactivate: [unsaved_guard_1.UnsavedGuard]
     },
     {
         path: "form/:mode", component: form_component_1.FormComponent,
