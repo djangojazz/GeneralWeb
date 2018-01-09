@@ -24,7 +24,16 @@ var routing = router_1.RouterModule.forChild([
                     { outlet: "primary", path: "", component: first_component_1.FirstComponent, },
                     { outlet: "left", path: "", component: second_component_1.SecondComponent, },
                     { outlet: "right", path: "", component: second_component_1.SecondComponent, },
-                ] },
+                ]
+            },
+            {
+                path: "swap",
+                children: [
+                    { outlet: "primary", path: "", component: second_component_1.SecondComponent, },
+                    { outlet: "left", path: "", component: first_component_1.FirstComponent, },
+                    { outlet: "right", path: "", component: first_component_1.FirstComponent, },
+                ]
+            }
         ]
     }
 ]);
