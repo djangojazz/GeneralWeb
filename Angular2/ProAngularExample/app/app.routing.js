@@ -8,6 +8,7 @@ var categoryCount_component_1 = require("./core/categoryCount.component");
 var model_resolver_1 = require("./model/model.resolver");
 var terms_guard_1 = require("./terms.guard");
 var unsaved_guard_1 = require("./core/unsaved.guard");
+var load_guard_1 = require("./load.guard");
 var childRoutes = [
     { path: "",
         canActivateChild: [terms_guard_1.TermsGuard],
@@ -20,7 +21,8 @@ var childRoutes = [
 var routes = [
     {
         path: "ondemand",
-        loadChildren: "app/ondemand/ondemand.module#OndemandModule"
+        loadChildren: "app/ondemand/ondemand.module#OndemandModule",
+        canLoad: [load_guard_1.LoadGuard]
     },
     {
         path: "form/:mode/:id", component: form_component_1.FormComponent,
