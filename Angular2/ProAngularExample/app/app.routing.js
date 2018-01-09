@@ -19,6 +19,10 @@ var childRoutes = [
 ];
 var routes = [
     {
+        path: "ondemand",
+        loadChildren: "app/ondemand/ondemand.module#OndemandModule"
+    },
+    {
         path: "form/:mode/:id", component: form_component_1.FormComponent,
         resolve: { model: model_resolver_1.ModelResolver },
         canDeactivate: [unsaved_guard_1.UnsavedGuard]
