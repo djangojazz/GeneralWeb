@@ -12,8 +12,21 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var ondemand_component_1 = require("./ondemand.component");
 var router_1 = require("@angular/router");
+var first_component_1 = require("./first.component");
+var second_component_1 = require("./second.component");
 var routing = router_1.RouterModule.forChild([
-    { path: "", component: ondemand_component_1.OndemandComponent }
+    {
+        path: "",
+        component: ondemand_component_1.OndemandComponent,
+        children: [
+            { path: "",
+                children: [
+                    { outlet: "primary", path: "", component: first_component_1.FirstComponent, },
+                    { outlet: "left", path: "", component: second_component_1.SecondComponent, },
+                    { outlet: "right", path: "", component: second_component_1.SecondComponent, },
+                ] },
+        ]
+    }
 ]);
 var OndemandModule = (function () {
     function OndemandModule() {
@@ -21,7 +34,7 @@ var OndemandModule = (function () {
     OndemandModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, routing],
-            declarations: [ondemand_component_1.OndemandComponent],
+            declarations: [ondemand_component_1.OndemandComponent, first_component_1.FirstComponent, second_component_1.SecondComponent],
             exports: [ondemand_component_1.OndemandComponent]
         }), 
         __metadata('design:paramtypes', [])
