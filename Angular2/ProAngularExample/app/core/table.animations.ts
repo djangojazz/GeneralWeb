@@ -1,16 +1,21 @@
 import { trigger, style, state, transition, animate, group } from "@angular/core";
 
+const commonStyles = {
+    border: "black solid 4px",
+    color: "white"
+}
+
 export const HighlightTrigger = trigger("rowHighlight", [
-        state("selected", style({
+        state("selected", style([commonStyles, {
         backgroundColor: "lightgreen",
         fontSize: "20px"
-    })),
-    state("notselected", style({
+    }])),
+    state("notselected", style([commonStyles, {
         backgroundColor: "lightsalmon",
         fontSize: "12px"
-    })),
+    }])),
     state("void", style({
-        opacity: 0
+        transform: "translateX(-50%)"
     })),
     transition("* => notselected", animate("200ms")),
     transition("* => selected", 
