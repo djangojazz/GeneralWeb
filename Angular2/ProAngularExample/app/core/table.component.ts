@@ -3,6 +3,7 @@ import { Product } from "../model/product.model";
 import { Model } from "../model/repository.model";
 import { ActivatedRoute } from "@angular/router";
 import { HighlightTrigger } from "./table.animations";
+import { AnimationTransitionEvent } from "@angular/core";
 
 @Component({
     selector: "paTable",
@@ -44,4 +45,11 @@ export class TableComponent {
         return this.highlightCategory == "" ? "" :
             this.highlightCategory == category ? "selected" : "notselected";
     }
+
+    writeAnimationEvent(event: AnimationTransitionEvent,
+        name: string, start: boolean) {
+            console.log("Animation " + name + " " + (start ? 'Start' : 'Done')
+            + " from: " + event.fromState + " to: " + event.toState + " time: "
+            + event.totalTime);
+        }
 }

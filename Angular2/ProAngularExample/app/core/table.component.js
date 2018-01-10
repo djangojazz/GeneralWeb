@@ -46,6 +46,11 @@ var TableComponent = (function () {
         return this.highlightCategory == "" ? "" :
             this.highlightCategory == category ? "selected" : "notselected";
     };
+    TableComponent.prototype.writeAnimationEvent = function (event, name, start) {
+        console.log("Animation " + name + " " + (start ? 'Start' : 'Done')
+            + " from: " + event.fromState + " to: " + event.toState + " time: "
+            + event.totalTime);
+    };
     TableComponent = __decorate([
         core_1.Component({
             selector: "paTable",
