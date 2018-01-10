@@ -1,18 +1,13 @@
 "use strict";
 var core_1 = require("@angular/core");
+var animationUtils_1 = require("./animationUtils");
 var commonStyles = {
     border: "black solid 4px",
     color: "white"
 };
 exports.HighlightTrigger = core_1.trigger("rowHighlight", [
-    core_1.state("selected", core_1.style([commonStyles, {
-            backgroundColor: "lightgreen",
-            fontSize: "20px"
-        }])),
-    core_1.state("notselected", core_1.style([commonStyles, {
-            backgroundColor: "lightsalmon",
-            fontSize: "12px"
-        }])),
+    core_1.state("selected", core_1.style(animationUtils_1.getStylesFromClasses(["bg-success", "h2"]))),
+    core_1.state("notselected", core_1.style(animationUtils_1.getStylesFromClasses("bg-info"))),
     core_1.state("void", core_1.style({
         transform: "translateX(-50%)"
     })),
