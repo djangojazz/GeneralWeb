@@ -9,15 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var repository_model_1 = require("../model/repository.model");
 var FirstComponent = (function () {
-    function FirstComponent() {
+    function FirstComponent(repository) {
+        this.repository = repository;
+        this.category = "Soccer";
     }
+    FirstComponent.prototype.getProducts = function () {
+        var _this = this;
+        return this.repository.getProducts()
+            .filter(function (p) { return p.category == _this.category; });
+    };
     FirstComponent = __decorate([
         core_1.Component({
             selector: "first",
-            template: "<div class=\"bg-primary p-a-1\">First Component</div>"
+            template: "<div class=\"bg-primary p-a-1\">\n                There are \n                    <span class=\"strong\">{{getProducts().length}}</span> \n                products\n                </div>"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [repository_model_1.Model])
     ], FirstComponent);
     return FirstComponent;
 }());
