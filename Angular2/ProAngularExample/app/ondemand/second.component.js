@@ -15,7 +15,7 @@ var SecondComponent = (function () {
     SecondComponent = __decorate([
         core_1.Component({
             selector: "second",
-            template: "<div class=\"bg-primary p-a-1\">Second Component</div>"
+            template: "<div class=\"bg-info p-a-1\">Second Component</div>"
         }), 
         __metadata('design:paramtypes', [])
     ], SecondComponent);
