@@ -15,28 +15,16 @@ var FirstComponent = (function () {
         this.repository = repository;
         this.category = "Soccer";
         this.highlighted = false;
-        this.change = new core_1.EventEmitter();
     }
     FirstComponent.prototype.getProducts = function () {
         var _this = this;
-        return this.repository.getProducts()
+        return this.model == null ? [] : this.model.getProducts()
             .filter(function (p) { return p.category == _this.category; });
     };
-    FirstComponent.prototype.setHighlight = function (type) {
-        this.highlighted = type == "mouseenter";
-        this.change.emit(this.highlighted);
-    };
     __decorate([
-        core_1.Output("pa-highlight"), 
-        __metadata('design:type', Object)
-    ], FirstComponent.prototype, "change", void 0);
-    __decorate([
-        core_1.HostListener("mouseenter", ["$event.type"]),
-        core_1.HostListener("mouseleave", ["$event.type"]), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', [String]), 
-        __metadata('design:returntype', void 0)
-    ], FirstComponent.prototype, "setHighlight", null);
+        core_1.Input("pa-model"), 
+        __metadata('design:type', repository_model_1.Model)
+    ], FirstComponent.prototype, "model", void 0);
     FirstComponent = __decorate([
         core_1.Component({
             selector: "first",
