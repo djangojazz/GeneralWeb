@@ -6,6 +6,8 @@ var repository_model_1 = require("../app/model/repository.model");
 describe("FirstComponent", function () {
     var fixture;
     var component;
+    var debugElement;
+    var bindingElement;
     var mockRepository = {
         getProducts: function () {
             return [
@@ -15,23 +17,31 @@ describe("FirstComponent", function () {
             ];
         }
     };
-    beforeEach(function () {
+    beforeEach(testing_1.async(function () {
         testing_1.TestBed.configureTestingModule({
             declarations: [first_component_1.FirstComponent],
             providers: [
                 { provide: repository_model_1.Model, useValue: mockRepository }
             ]
         });
-        fixture = testing_1.TestBed.createComponent(first_component_1.FirstComponent);
-        component = fixture.componentInstance;
-    });
+        testing_1.TestBed.compileComponents().then(function () {
+            fixture = testing_1.TestBed.createComponent(first_component_1.FirstComponent);
+            component = fixture.componentInstance;
+        });
+    }));
     it("filters catgories", function () {
         component.category = "Chess";
+        fixture.detectChanges();
         expect(component.getProducts().length).toBe(1);
+        expect(bindingElement.textContent).toContain("1");
         component.category = "Soccer";
+        fixture.detectChanges();
         expect(component.getProducts().length).toBe(2);
+        expect(bindingElement.textContent).toContain("2");
         component.category = "Running";
+        fixture.detectChanges();
         expect(component.getProducts().length).toBe(0);
+        expect(bindingElement.textContent).toContain("0");
     });
 });
 //# sourceMappingURL=first.component.spec.js.map

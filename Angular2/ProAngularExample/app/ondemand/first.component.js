@@ -23,7 +23,8 @@ var FirstComponent = (function () {
     FirstComponent = __decorate([
         core_1.Component({
             selector: "first",
-            template: "<div class=\"bg-primary p-a-1\">\n                There are \n                    <span class=\"strong\">{{getProducts().length}}</span> \n                products\n                </div>"
+            moduleId: module.id,
+            templateUrl: "first.component.html"
         }), 
         __metadata('design:paramtypes', [repository_model_1.Model])
     ], FirstComponent);
