@@ -7,7 +7,6 @@ describe("FirstComponent", function () {
     var fixture;
     var component;
     var debugElement;
-    var divElement;
     var mockRepository = {
         getProducts: function () {
             return [
@@ -28,20 +27,15 @@ describe("FirstComponent", function () {
             fixture = testing_1.TestBed.createComponent(first_component_1.FirstComponent);
             component = fixture.componentInstance;
             debugElement = fixture.debugElement;
-            divElement = debugElement.children[0].nativeElement;
         });
     }));
-    it("handles mouse events", function () {
-        expect(component.highlighted).toBeFalsy();
-        expect(divElement.classList.contains("bg-success")).toBeFalsy();
+    it("implements output property", function () {
+        var highlighted;
+        component.change.subscribe(function (value) { return highlighted = value; });
         debugElement.triggerEventHandler("mouseenter", new Event("mouseenter"));
-        fixture.detectChanges();
-        expect(component.highlighted).toBeTruthy();
-        expect(divElement.classList.contains("bg-success")).toBeTruthy();
+        expect(highlighted).toBeTruthy();
         debugElement.triggerEventHandler("mouseleave", new Event("mouseleave"));
-        fixture.detectChanges();
-        expect(component.highlighted).toBeFalsy();
-        expect(divElement.classList.contains("bg-success")).toBeFalsy();
+        expect(highlighted).toBeFalsy();
     });
 });
 //# sourceMappingURL=first.component.spec.js.map

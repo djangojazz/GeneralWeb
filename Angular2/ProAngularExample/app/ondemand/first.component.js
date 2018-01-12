@@ -8,13 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var repository_model_1 = require("../model/repository.model");
 var FirstComponent = (function () {
     function FirstComponent(repository) {
         this.repository = repository;
         this.category = "Soccer";
         this.highlighted = false;
+        this.change = new core_1.EventEmitter();
     }
     FirstComponent.prototype.getProducts = function () {
         var _this = this;
@@ -23,7 +24,12 @@ var FirstComponent = (function () {
     };
     FirstComponent.prototype.setHighlight = function (type) {
         this.highlighted = type == "mouseenter";
+        this.change.emit(this.highlighted);
     };
+    __decorate([
+        core_1.Output("pa-highlight"), 
+        __metadata('design:type', Object)
+    ], FirstComponent.prototype, "change", void 0);
     __decorate([
         core_1.HostListener("mouseenter", ["$event.type"]),
         core_1.HostListener("mouseleave", ["$event.type"]), 
