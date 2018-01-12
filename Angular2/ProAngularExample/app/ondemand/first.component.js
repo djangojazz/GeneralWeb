@@ -9,29 +9,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var repository_model_1 = require("../model/repository.model");
+var rest_datasource_1 = require("../model/rest.datasource");
 var FirstComponent = (function () {
-    function FirstComponent(repository) {
-        this.repository = repository;
-        this.category = "Soccer";
+    function FirstComponent(datasource) {
+        this.datasource = datasource;
+        this._category = "Soccer";
+        this._products = [];
         this.highlighted = false;
     }
-    FirstComponent.prototype.getProducts = function () {
-        var _this = this;
-        return this.model == null ? [] : this.model.getProducts()
-            .filter(function (p) { return p.category == _this.category; });
+    FirstComponent.prototype.ngOnInit = function () {
+        this.updateData();
     };
-    __decorate([
-        core_1.Input("pa-model"), 
-        __metadata('design:type', repository_model_1.Model)
-    ], FirstComponent.prototype, "model", void 0);
+    FirstComponent.prototype.getProducts = function () {
+        return this._products;
+    };
+    Object.defineProperty(FirstComponent.prototype, "category", {
+        set: function (newValue) {
+            this._category;
+            this.updateData();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    FirstComponent.prototype.updateData = function () {
+        var _this = this;
+        this.datasource.getData()
+            .subscribe(function (data) { return _this._products = data
+            .filter(function (p) { return p.category == _this._category; }); });
+    };
     FirstComponent = __decorate([
         core_1.Component({
             selector: "first",
             moduleId: module.id,
             templateUrl: "first.component.html"
         }), 
-        __metadata('design:paramtypes', [repository_model_1.Model])
+        __metadata('design:paramtypes', [rest_datasource_1.RestDataSource])
     ], FirstComponent);
     return FirstComponent;
 }());

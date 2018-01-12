@@ -5,56 +5,51 @@ import { Model } from "../app/model/repository.model";
 import { DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 import { Component, ViewChild } from "@angular/core";
+import { RestDataSource } from "../app/model/rest.datasource";
+import { Observable } from "rxjs/Observable";
+import "rxjs/add/observable/from";
+import { Injectable } from "@angular/core";
 
-@Component({
-    template: `<first [pa-model]="model"></first>`
-})
-class TestComponent {
-    constructor(public model: Model) {}
-    @ViewChild(FirstComponent)
-    firstComponent: FirstComponent;
+@Injectable()
+class MockDataSource {
+    public data = [
+        new Product(1, "test1", "Soccer", 100),
+        new Product(2, "test2", "Chess", 100),
+        new Product(3, "test3", "Soccer", 100),
+    ];
+
+    getData(): Observable<Product[]> {
+        return new Observable<Product>(obs => {
+            setTimeout(() => obs.next(this.data), 1000);
+        })
+    }
 }
 
 describe("FirstComponent", () => {
 
-    let fixture: ComponentFixture<TestComponent>;
+    let fixture: ComponentFixture<FirstComponent>;
     let component: FirstComponent;
-    let debugElement: DebugElement;
-
-    let mockRepository = {
-        getProducts: function() {
-            return [
-                new Product(1, "test1", "Soccer", 100),
-                new Product(2, "test2", "Chess", 100),
-                new Product(3, "test3", "Soccer", 100),
-            ]
-        }
-    }
+    let dataSource = new MockDataSource();
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [FirstComponent, TestComponent],
+            declarations: [FirstComponent],
             providers: [
-                { provide: Model, useValue: mockRepository }
+                { provide: RestDataSource, useValue: dataSource }
             ]
         });
         TestBed.compileComponents().then(() => {
-            fixture = TestBed.createComponent(TestComponent);
-            component = fixture.componentInstance.firstComponent;
-            debugElement = fixture.debugElement.query(By.directive(FirstComponent));
+            fixture = TestBed.createComponent(FirstComponent);
+            component = fixture.componentInstance;
         });
     }));
 
-    it("receives the model through an input property", () => {
-        component.category = "Chess";
+    it("performs async op", () => {
+        dataSource.data.push(new Product(100, "test100", "Soccer", 100));
         fixture.detectChanges();
-        let products = mockRepository.getProducts()
-            .filter(p => p.category == component.category);
-        let componentProducts = component.getProducts();
-        for(let i = 0; i < componentProducts.length; i++) {
-            expect(componentProducts[i]).toEqual(products[i]);
-        }
-        expect(debugElement.query(By.css("span")).nativeElement.textContent)
-            .toContain(products.length);
+
+        fixture.whenStable().then(() => {
+            expect(component.getProducts().length).toBe(3);
+        });
     });
 });

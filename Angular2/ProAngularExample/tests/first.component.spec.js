@@ -11,62 +11,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var testing_1 = require("@angular/core/testing");
 var first_component_1 = require("../app/ondemand/first.component");
 var product_model_1 = require("../app/model/product.model");
-var repository_model_1 = require("../app/model/repository.model");
-var platform_browser_1 = require("@angular/platform-browser");
+var rest_datasource_1 = require("../app/model/rest.datasource");
+var Observable_1 = require("rxjs/Observable");
+require("rxjs/add/observable/from");
 var core_1 = require("@angular/core");
-var TestComponent = (function () {
-    function TestComponent(model) {
-        this.model = model;
+var MockDataSource = (function () {
+    function MockDataSource() {
+        this.data = [
+            new product_model_1.Product(1, "test1", "Soccer", 100),
+            new product_model_1.Product(2, "test2", "Chess", 100),
+            new product_model_1.Product(3, "test3", "Soccer", 100),
+        ];
     }
-    __decorate([
-        core_1.ViewChild(first_component_1.FirstComponent), 
-        __metadata('design:type', first_component_1.FirstComponent)
-    ], TestComponent.prototype, "firstComponent", void 0);
-    TestComponent = __decorate([
-        core_1.Component({
-            template: "<first [pa-model]=\"model\"></first>"
-        }), 
-        __metadata('design:paramtypes', [repository_model_1.Model])
-    ], TestComponent);
-    return TestComponent;
+    MockDataSource.prototype.getData = function () {
+        var _this = this;
+        return new Observable_1.Observable(function (obs) {
+            setTimeout(function () { return obs.next(_this.data); }, 1000);
+        });
+    };
+    MockDataSource = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], MockDataSource);
+    return MockDataSource;
 }());
 describe("FirstComponent", function () {
     var fixture;
     var component;
-    var debugElement;
-    var mockRepository = {
-        getProducts: function () {
-            return [
-                new product_model_1.Product(1, "test1", "Soccer", 100),
-                new product_model_1.Product(2, "test2", "Chess", 100),
-                new product_model_1.Product(3, "test3", "Soccer", 100),
-            ];
-        }
-    };
+    var dataSource = new MockDataSource();
     beforeEach(testing_1.async(function () {
         testing_1.TestBed.configureTestingModule({
-            declarations: [first_component_1.FirstComponent, TestComponent],
+            declarations: [first_component_1.FirstComponent],
             providers: [
-                { provide: repository_model_1.Model, useValue: mockRepository }
+                { provide: rest_datasource_1.RestDataSource, useValue: dataSource }
             ]
         });
         testing_1.TestBed.compileComponents().then(function () {
-            fixture = testing_1.TestBed.createComponent(TestComponent);
-            component = fixture.componentInstance.firstComponent;
-            debugElement = fixture.debugElement.query(platform_browser_1.By.directive(first_component_1.FirstComponent));
+            fixture = testing_1.TestBed.createComponent(first_component_1.FirstComponent);
+            component = fixture.componentInstance;
         });
     }));
-    it("receives the model through an input property", function () {
-        component.category = "Chess";
+    it("performs async op", function () {
+        dataSource.data.push(new product_model_1.Product(100, "test100", "Soccer", 100));
         fixture.detectChanges();
-        var products = mockRepository.getProducts()
-            .filter(function (p) { return p.category == component.category; });
-        var componentProducts = component.getProducts();
-        for (var i = 0; i < componentProducts.length; i++) {
-            expect(componentProducts[i]).toEqual(products[i]);
-        }
-        expect(debugElement.query(platform_browser_1.By.css("span")).nativeElement.textContent)
-            .toContain(products.length);
+        fixture.whenStable().then(function () {
+            expect(component.getProducts().length).toBe(3);
+        });
     });
 });
 //# sourceMappingURL=first.component.spec.js.map
