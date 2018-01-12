@@ -10,7 +10,7 @@ describe("FirstComponent", () => {
     let fixture: ComponentFixture<FirstComponent>;
     let component: FirstComponent;
     let debugElement: DebugElement;
-    let spanElement: HTMLSpanElement;
+    let divElement: HTMLDivElement;
 
     let mockRepository = {
         getProducts: function() {
@@ -33,24 +33,20 @@ describe("FirstComponent", () => {
             fixture = TestBed.createComponent(FirstComponent);
             component = fixture.componentInstance;
             debugElement = fixture.debugElement;
-            spanElement = debugElement.query(By.css("span")).nativeElement;
+            divElement = debugElement.children[0].nativeElement;
         });
     }));
 
-    it("filters catgories", () => {
-        component.category = "Chess"
+    it("handles mouse events", () => {
+        expect(component.highlighted).toBeFalsy();
+        expect(divElement.classList.contains("bg-success")).toBeFalsy();
+        debugElement.triggerEventHandler("mouseenter", new Event("mouseenter"));
         fixture.detectChanges();
-        expect(component.getProducts().length).toBe(1);
-        expect(spanElement.textContent).toContain("1");
-
-        component.category = "Soccer"
+        expect(component.highlighted).toBeTruthy();
+        expect(divElement.classList.contains("bg-success")).toBeTruthy();
+        debugElement.triggerEventHandler("mouseleave", new Event("mouseleave"));
         fixture.detectChanges();
-        expect(component.getProducts().length).toBe(2);
-        expect(spanElement.textContent).toContain("2");
-
-        component.category = "Running"
-        fixture.detectChanges();
-        expect(component.getProducts().length).toBe(0);
-        expect(spanElement.textContent).toContain("0");
+        expect(component.highlighted).toBeFalsy();
+        expect(divElement.classList.contains("bg-success")).toBeFalsy();
     });
 });

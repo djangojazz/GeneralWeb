@@ -14,12 +14,23 @@ var FirstComponent = (function () {
     function FirstComponent(repository) {
         this.repository = repository;
         this.category = "Soccer";
+        this.highlighted = false;
     }
     FirstComponent.prototype.getProducts = function () {
         var _this = this;
         return this.repository.getProducts()
             .filter(function (p) { return p.category == _this.category; });
     };
+    FirstComponent.prototype.setHighlight = function (type) {
+        this.highlighted = type == "mouseenter";
+    };
+    __decorate([
+        core_1.HostListener("mouseenter", ["$event.type"]),
+        core_1.HostListener("mouseleave", ["$event.type"]), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [String]), 
+        __metadata('design:returntype', void 0)
+    ], FirstComponent.prototype, "setHighlight", null);
     FirstComponent = __decorate([
         core_1.Component({
             selector: "first",

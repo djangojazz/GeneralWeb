@@ -3,12 +3,11 @@ var testing_1 = require("@angular/core/testing");
 var first_component_1 = require("../app/ondemand/first.component");
 var product_model_1 = require("../app/model/product.model");
 var repository_model_1 = require("../app/model/repository.model");
-var platform_browser_1 = require("@angular/platform-browser");
 describe("FirstComponent", function () {
     var fixture;
     var component;
     var debugElement;
-    var spanElement;
+    var divElement;
     var mockRepository = {
         getProducts: function () {
             return [
@@ -29,22 +28,20 @@ describe("FirstComponent", function () {
             fixture = testing_1.TestBed.createComponent(first_component_1.FirstComponent);
             component = fixture.componentInstance;
             debugElement = fixture.debugElement;
-            spanElement = debugElement.query(platform_browser_1.By.css("span")).nativeElement;
+            divElement = debugElement.children[0].nativeElement;
         });
     }));
-    it("filters catgories", function () {
-        component.category = "Chess";
+    it("handles mouse events", function () {
+        expect(component.highlighted).toBeFalsy();
+        expect(divElement.classList.contains("bg-success")).toBeFalsy();
+        debugElement.triggerEventHandler("mouseenter", new Event("mouseenter"));
         fixture.detectChanges();
-        expect(component.getProducts().length).toBe(1);
-        expect(spanElement.textContent).toContain("1");
-        component.category = "Soccer";
+        expect(component.highlighted).toBeTruthy();
+        expect(divElement.classList.contains("bg-success")).toBeTruthy();
+        debugElement.triggerEventHandler("mouseleave", new Event("mouseleave"));
         fixture.detectChanges();
-        expect(component.getProducts().length).toBe(2);
-        expect(spanElement.textContent).toContain("2");
-        component.category = "Running";
-        fixture.detectChanges();
-        expect(component.getProducts().length).toBe(0);
-        expect(spanElement.textContent).toContain("0");
+        expect(component.highlighted).toBeFalsy();
+        expect(divElement.classList.contains("bg-success")).toBeFalsy();
     });
 });
 //# sourceMappingURL=first.component.spec.js.map
